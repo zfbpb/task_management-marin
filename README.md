@@ -1,6 +1,6 @@
 ### install
 
 ```
-npm install -g sass
-npm install sass --save
+npm install -D sass
+
 ```
