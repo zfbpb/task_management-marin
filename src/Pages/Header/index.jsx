@@ -1,13 +1,16 @@
 import React from "react";
 import "../Header/header.scss";
-import kanbanLogoLight from "../../icons/logo-light.svg";
-import boardImg from "../../icons/icon-board.svg";
-import hideSidebar from "../../icons/icon-hide-sidebar.svg";
+import kanbanLogoLight from "../../Icons/logo-light.svg";
+import boardImg from "../../Icons/icon-board.svg";
+import hideSidebar from "../../Icons/icon-hide-sidebar.svg";
 
 const Header = () => {
   const boardIcon = <img src={boardImg} alt="board icon" />;
   const hideSidebarIcon = <img src={hideSidebar} alt="hide icon" />;
   const kanbanLogoLightIcon = <img src={kanbanLogoLight} alt="kanban logo" />;
+
+  
+
   return (
     <div className="headerContainer">
       <div className="headerContent">

@@ -1,6 +1,7 @@
-@import '../../assets/colors/colors.scss';
+@import '../../Assets/colors/colors.scss';
 
-.headerContainer {
+.headerContainer 
+{
     background-color: $background2;
     padding: 2em;
     display: flex;
@@ -9,9 +10,9 @@
     color: $text;
     height: 100vh;
     box-sizing: border-box;
-}
-
-.headerContent {
+    
+.headerContent 
+{
     display: flex;
     flex-direction: column;
 }
@@ -23,18 +24,29 @@
     justify-content: flex-end;
 }
 
-.headerContainer button
+button
 {
     margin-top: 1em;
     cursor: pointer;
     display: flex;
     align-items: center;
+    background-color: transparent;
+    border: 0;
+    color: $text2;
 }
-.headerContainer button img
+button img
 {
     margin-right: 1.5em;
 }
-.headerContainer h1
+h1
 {
     padding-bottom: 1em;
+}
+p
+{
+    color: $text2;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    margin-bottom: 2em;
+}
 }
