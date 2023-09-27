@@ -1,6 +1,16 @@
 $background: #21212d;
 $background2: #2c2c38;
 $text: #ffff;
+$text-dark: #ffff;
+$text-light: #000000;
 $text2: #828fa3;
 $active: #635fc7;
 $hover: #afa8fb;
+
+.light-theme {
+  color: $text-light;
+}
+
+.dark-theme {
+  color: $text-dark;
+}
