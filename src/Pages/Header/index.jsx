@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import "../Header/header.scss";
-import kanbanLogoLight from "../../Icons/logo-light.svg";
-import boardImg from "../../Icons/icon-board.svg";
-import hideSidebar from "../../Icons/icon-hide-sidebar.svg";
+import kanbanLogoLight from "../../icons/logo-light.svg" // ovo je popravljeno i radi
+import boardImg from "../../icons/icon-board.svg"; // ovo ne radi
+import hideSidebar from "../../icons/icon-hide-sidebar.svg";
 import { ThemeContext } from "../../Theme";
 
 const Header = () => {
