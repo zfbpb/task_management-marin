@@ -1,5 +1,5 @@
 import React, { useEffect, createContext, useState } from "react";
-import './Assets/colors/colors.scss'
+import './assets/colors/colors.scss'
 
 const ThemeContext = createContext();
 
