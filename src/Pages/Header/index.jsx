@@ -13,8 +13,8 @@ const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <div className="headerContainer">
-      <div className="headerContent">
+    <header className="header">
+      <div className="header__content">
         <h1>{kanbanLogoLightIcon}</h1>
         <p>ALL BOARDS</p>
         <button className="board">{boardIcon}Platform Launch</button>
@@ -22,13 +22,13 @@ const Header = () => {
         <button className="board">{boardIcon}Roadmap</button>
         <button>{boardIcon}+ Create New Board</button>
       </div>
-      <div className="headerBottom">
+      <div className="header__bottom">
         <div className="header-toggle-buttons">
           <button onClick={() => toggleTheme()}>{theme}</button>
         </div>
         <button>{hideSidebarIcon}Hide Sidebar</button>
       </div>
-    </div>
+    </header>
   );
 };
 
