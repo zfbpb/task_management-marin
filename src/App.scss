@@ -1,16 +1,15 @@
-@import './Assets/colors/colors.scss';
+@import './assets/colors/colors.scss';
 
-* 
-{
-margin: 0;
-box-sizing: border-box;
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .App.light-theme {
-    color: $text-light;
-  }
+  color: $text-light;
+}
   
-  .App.dark-theme {
-    color: $text-dark;
-  }
+.App.dark-theme {
+  color: $text-dark;
+}
   

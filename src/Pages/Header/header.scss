@@ -1,31 +1,28 @@
-@import '../../Assets/colors/colors.scss';
+@import '../../assets/colors/colors.scss';
 
-.headerContainer 
-{
-    background-color: $background2;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    width: 15em;
-    color: $text;
-    height: 100vh;
-    box-sizing: border-box;
+.header {
+  background-color: $background2;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  width: 15em;
+  color: $text;
+  height: 100vh;
+  box-sizing: border-box;
     
-.headerContent 
-{
+  &__content {
     display: flex;
     flex-direction: column;
-}
+  }
 
-.headerBottom { 
+  &__bottom { 
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-}
+  }
 
-button
-{
+  button {
     margin-top: 1em;
     cursor: pointer;
     display: flex;
@@ -33,20 +30,20 @@ button
     background-color: transparent;
     border: 0;
     color: $text2;
-}
-button img
-{
-    margin-right: 1.5em;
-}
-h1
-{
+
+    img {
+      margin-right: 1.5em;
+    }
+  }
+ 
+  h1 {
     padding-bottom: 1em;
-}
-p
-{
+  }
+
+  p {
     color: $text2;
     letter-spacing: 0.2rem;
     font-size: 0.8rem;
     margin-bottom: 2em;
-}
+  }
 }
