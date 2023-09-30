@@ -1,14 +1,23 @@
 @import '../../assets/colors/colors.scss';
 
 .header {
-  background-color: $background2;
+  
   padding: 2em;
   display: flex;
   flex-direction: column;
   width: 15em;
-  color: $text;
+  
   height: 100vh;
   box-sizing: border-box;
+
+  &.dark-theme {
+    background-color: $background2;
+  }
+  
+  &.light-theme {
+    background-color: white;
+    border-right: 1px solid $background2;
+  }
     
   &__content {
     display: flex;

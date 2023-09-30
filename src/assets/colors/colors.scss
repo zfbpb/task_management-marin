@@ -7,10 +7,14 @@ $text2: #828fa3;
 $active: #635fc7;
 $hover: #afa8fb;
 
+
 .light-theme {
   color: $text-light;
+  
 }
 
 .dark-theme {
   color: $text-dark;
+  background-color: $background; 
 }
+
