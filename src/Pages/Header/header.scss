@@ -1,12 +1,19 @@
 @import '../../assets/colors/colors.scss';
 
 .header {
-  padding: 2em;
+  /* padding: 2em; */
   display: flex;
+  font-weight: bold;
   flex-direction: column;
   width: 15em;
   height: 100vh;
   box-sizing: border-box;
+  transition: transform 0.3s ease-out;
+  transform: translateY(0); // initial position for animation
+  
+  &.hidden{
+    transform: translate(-100%);
+  }
 
   &.dark-theme {
     background-color: $background2;
@@ -71,12 +78,12 @@
   .theme-toggle-wrapper {
     display: flex;
     justify-content: center;
+    margin: 0.5rem;
     padding: 1rem;
     border-radius: 10px;
   }
 
   .themeToggleBtn {
-
     display: flex;
     justify-content: space-between;
     width: 50%;
@@ -94,7 +101,9 @@
     align-items: center;
     background-color: transparent;
     border: 0;
+
     color: $text2;
+    font-weight: bold;
 
     img {
       margin-right: 1.5em;
@@ -106,9 +115,46 @@
   }
 
   p {
+    margin: 1em;
     color: $text2;
     letter-spacing: 0.2rem;
     font-size: 0.8rem;
     margin-bottom: 2em;
+  }
+
+  .board,
+  .create-board {
+    padding: 10px;
+
+  }
+
+  //inside Icons folder
+  .boardIcon {
+    margin-right: 10px;
+  }
+
+  .board:hover {
+    margin-right: 10px;
+    color: white;
+    background-color: $hover;
+    border-radius: 0 30px 30px 0;
+  }
+
+  .create-board {
+    color: $active;
+  }
+
+  .create-board:hover {
+    color: $hover;
+  }
+
+  .create-board:hover img {
+    fill: $hover;
+  }
+
+  h1,
+  p,
+  .hideSidebarBtn {
+    padding: 1em;
   }
 }
