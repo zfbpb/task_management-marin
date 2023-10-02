@@ -1,1 +1,11 @@
 @import '../../assets/colors/colors.scss';
+
+.mainContainer
+{
+    width: 100%;
+    
+    &.light-theme
+    {
+        background-color: white;
+    }
+}

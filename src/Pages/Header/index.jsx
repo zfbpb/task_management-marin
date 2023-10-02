@@ -6,6 +6,9 @@ import kanbanLogoLight from "../../Icons/logo-light.svg";
 import kanbanLogoDark from "../../Icons/logo-dark.svg";
 import boardImg from "../../Icons/icon-board.svg";
 import hideSidebar from "../../Icons/icon-hide-sidebar.svg";
+import sun from "../../Icons/sun.png";
+import moon from "../../Icons/half-moon.png";
+
 import { ThemeContext } from "../../Theme";
 
 const Header = () => {
@@ -17,11 +20,15 @@ const Header = () => {
   const kanbanLogoDarkIcon = (
     <img src={kanbanLogoDark} alt="kanban logo dark" />
   );
+
+  const sunIcon = <img src={sun} alt="sun icon" className="sunIcon" />;
+  const moonIcon = <img src={moon} alt="moon icon" className="moonIcon" />;
+
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleThemeToggle = () => {
     toggleTheme();
-    setCheckMode((prev) => !prev); 
+    setCheckMode((prev) => !prev);
   };
   return (
     <header className={`header ${theme}`}>
@@ -36,13 +43,18 @@ const Header = () => {
         <button className="board">{boardIcon}Platform Launch</button>
         <button className="board">{boardIcon}Marketing Plan</button>
         <button className="board">{boardIcon}Roadmap</button>
-        <button>{boardIcon}+ Create New Board</button>
+        <button className="create-board">{boardIcon}+ Create New Board</button>
       </div>
       <div className="header__bottom">
-        <div className="header-toggle-buttons">
-          <button onClick={() => handleThemeToggle()}>{theme}</button>
+        <div className="theme-toggle-wrapper">
+          <button onClick={handleThemeToggle} className="themeToggleBtn">
+            <span className="sunSpan">{sunIcon}</span>
+            <span className="moonSpan">{moonIcon}</span>
+          </button>
         </div>
-        <button>{hideSidebarIcon}Hide Sidebar</button>
+        <button className="hideSidebarBtn">
+          {hideSidebarIcon}Hide Sidebar
+        </button>
       </div>
     </header>
   );
