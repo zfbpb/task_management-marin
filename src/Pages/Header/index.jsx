@@ -4,22 +4,21 @@ import "../../Assets/colors/colors.scss";
 
 import kanbanLogoLight from "../../Icons/logo-light.svg";
 import kanbanLogoDark from "../../Icons/logo-dark.svg";
-
-import hideSidebar from "../../Icons/icon-hide-sidebar.svg";
 import sun from "../../Icons/sun.png";
 import moon from "../../Icons/half-moon.png";
 
 import { ThemeContext } from "../../Theme";
 
 import { BoardImg } from "../../Icons/BoardIcon";
+import { HideSideBar } from "../../Icons/HideSideBar";
 
 const Header = ({ toggleHeader, hideHeader }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [checkMode, setCheckMode] = useState(theme === "dark-theme");
 
   const boardIcon = <BoardImg />;
+  const hideSidebarIcon = <HideSideBar/>;
 
-  const hideSidebarIcon = <img src={hideSidebar} alt="hide icon" />;
   const kanbanLogoLightIcon = <img src={kanbanLogoLight} alt="kanban logo" />;
   const kanbanLogoDarkIcon = (
     <img src={kanbanLogoDark} alt="kanban logo dark" />
@@ -40,7 +39,6 @@ const Header = ({ toggleHeader, hideHeader }) => {
         ) : (
           <h1>{kanbanLogoDarkIcon}</h1>
         )}
-
         <p>ALL BOARDS</p>
         <button className="board">{boardIcon}Platform Launch</button>
         <button className="board">{boardIcon}Marketing Plan</button>

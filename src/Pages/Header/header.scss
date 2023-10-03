@@ -3,16 +3,17 @@
 .header {
   /* padding: 2em; */
   display: flex;
-  font-weight: bold;
+  font-weight: 700;
   flex-direction: column;
   width: 15em;
   height: 100vh;
   box-sizing: border-box;
   transition: transform 0.3s ease-out;
-  transform: translateY(0); // initial position for animation
+  
+  transform: translateX(0); // initial position for animation
   
   &.hidden{
-    transform: translate(-100%);
+    transform: translateX(-100%);
   }
 
   &.dark-theme {
@@ -30,11 +31,14 @@
       transform: translateX(100%) rotate(360deg);
       opacity: 0;
     }
+    h1{
+      border-bottom: 1px solid $border;
+    }
   }
 
   &.light-theme {
     background-color: white;
-    border-right: 1px solid $background2;
+    border-right: 1px solid $light-border;
 
     .themeToggleBtn {
       background-color: $active;
@@ -47,6 +51,9 @@
     .moonSpan {
       transform: translateX(-100%) rotate(-360deg);
       opacity: 0;
+    }
+    h1{
+      border-bottom: 1px solid $light-border;
     }
   }
 
@@ -82,7 +89,7 @@
     padding: 1rem;
     border-radius: 10px;
   }
-
+ 
   .themeToggleBtn {
     display: flex;
     justify-content: space-between;
@@ -103,7 +110,7 @@
     border: 0;
 
     color: $text2;
-    font-weight: bold;
+    font-weight: 700;
 
     img {
       margin-right: 1.5em;
@@ -144,14 +151,16 @@
     color: $active;
   }
 
-  .create-board:hover {
+  .create-board:hover, .hideSidebarBtn:hover  {
     color: $hover;
   }
 
-  .create-board:hover img {
+  .create-board:hover img, .hideSidebarBtn:hover img {
     fill: $hover;
   }
-
+  .hideSideBarIcon{
+    margin-right: 0.4rem;
+  }
   h1,
   p,
   .hideSidebarBtn {
