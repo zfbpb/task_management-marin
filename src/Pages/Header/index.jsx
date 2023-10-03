@@ -15,9 +15,10 @@ import { HideSideBar } from "../../Icons/HideSideBar";
 const Header = ({ toggleHeader, hideHeader }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [checkMode, setCheckMode] = useState(theme === "dark-theme");
+  const [isActive, setIsActive] = useState(null);
 
   const boardIcon = <BoardImg />;
-  const hideSidebarIcon = <HideSideBar/>;
+  const hideSidebarIcon = <HideSideBar />;
 
   const kanbanLogoLightIcon = <img src={kanbanLogoLight} alt="kanban logo" />;
   const kanbanLogoDarkIcon = (
@@ -31,6 +32,10 @@ const Header = ({ toggleHeader, hideHeader }) => {
     toggleTheme();
     setCheckMode((prev) => !prev);
   };
+
+  const handleActiveBoard = (boardName) => {
+    setIsActive(boardName);
+  };
   return (
     <header className={`header ${theme} ${hideHeader ? "" : "hidden"}`}>
       <div className="header__content">
@@ -40,9 +45,24 @@ const Header = ({ toggleHeader, hideHeader }) => {
           <h1>{kanbanLogoDarkIcon}</h1>
         )}
         <p>ALL BOARDS</p>
-        <button className="board">{boardIcon}Platform Launch</button>
-        <button className="board">{boardIcon}Marketing Plan</button>
-        <button className="board">{boardIcon}Roadmap</button>
+        <button
+          className={`board ${isActive === "Platform Launch" ? "active" : ""}`}
+          onClick={() => handleActiveBoard("Platform Launch")}
+        >
+          {boardIcon}Platform Launch
+        </button>
+        <button
+          className={`board ${isActive === "Marketing Plan" ? "active" : ""}`}
+          onClick={() => handleActiveBoard("Marketing Plan")}
+        >
+          {boardIcon}Marketing Plan
+        </button>
+        <button
+          className={`board ${isActive === "Roadmap" ? "active" : ""}`}
+          onClick={() => handleActiveBoard("Roadmap")}
+        >
+          {boardIcon}Roadmap
+        </button>
         <button className="create-board">{boardIcon}+ Create New Board</button>
       </div>
       <div className="header__bottom">
