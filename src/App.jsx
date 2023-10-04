@@ -1,13 +1,14 @@
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.scss";
 import Layout from "./Pages/Layout";
 
-
 function App() {
-  
   return (
-    <div className="App">
-      <Layout />
-    </div>
+    <Router>
+      <div className="App">
+        <Layout />
+      </div>
+    </Router>
   );
 }
 
