@@ -33,9 +33,8 @@ const Header = ({ toggleHeader, hideHeader }) => {
     setCheckMode((prev) => !prev);
   };
 
-  const handleActiveBoard = (boardName) => {
-    setIsActive(boardName);
-  };
+  const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
+
   return (
     <header className={`header ${theme} ${hideHeader ? "" : "hidden"}`}>
       <div className="header__content">
@@ -45,24 +44,18 @@ const Header = ({ toggleHeader, hideHeader }) => {
           <h1>{kanbanLogoDarkIcon}</h1>
         )}
         <p>ALL BOARDS</p>
-        <button
-          className={`board ${isActive === "Platform Launch" ? "active" : ""}`}
-          onClick={() => handleActiveBoard("Platform Launch")}
-        >
-          {boardIcon}Platform Launch
-        </button>
-        <button
-          className={`board ${isActive === "Marketing Plan" ? "active" : ""}`}
-          onClick={() => handleActiveBoard("Marketing Plan")}
-        >
-          {boardIcon}Marketing Plan
-        </button>
-        <button
-          className={`board ${isActive === "Roadmap" ? "active" : ""}`}
-          onClick={() => handleActiveBoard("Roadmap")}
-        >
-          {boardIcon}Roadmap
-        </button>
+
+        {boardNames.map((board) => (
+          <button
+            className={`board ${
+              isActive === board ? "active" : ""
+            }`}
+            onClick={() => setIsActive(board)}
+          >
+            {boardIcon}{board}
+          </button>
+        ))}
+
         <button className="create-board">{boardIcon}+ Create New Board</button>
       </div>
       <div className="header__bottom">
