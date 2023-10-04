@@ -130,7 +130,10 @@
     font-size: 0.8rem;
     margin-bottom: 2em;
   }
-
+  a {
+    text-decoration: none;
+  }
+  
   .board,
   .create-board {
     padding: 10px;
@@ -143,14 +146,14 @@
   }
 
   .board:hover,
-  .board.active {
+  .active .board {
     margin-right: 10px;
     color: white;
     background-color: $hover;
     border-radius: 0 30px 30px 0;
   }
 
-  .board.active {
+  .active .board{
     background-color: $active;
   }
 

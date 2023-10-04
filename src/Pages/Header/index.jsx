@@ -1,21 +1,18 @@
 import React, { useContext, useState } from "react";
 import "../Header/header.scss";
 import "../../Assets/colors/colors.scss";
-
 import kanbanLogoLight from "../../Icons/logo-light.svg";
 import kanbanLogoDark from "../../Icons/logo-dark.svg";
 import sun from "../../Icons/sun.png";
 import moon from "../../Icons/half-moon.png";
-
 import { ThemeContext } from "../../Theme";
-
 import { BoardImg } from "../../Icons/BoardIcon";
 import { HideSideBar } from "../../Icons/HideSideBar";
+import { NavLink } from "react-router-dom";
 
 const Header = ({ toggleHeader, hideHeader }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [checkMode, setCheckMode] = useState(theme === "dark-theme");
-  const [isActive, setIsActive] = useState(null);
 
   const boardIcon = <BoardImg />;
   const hideSidebarIcon = <HideSideBar />;
@@ -34,7 +31,11 @@ const Header = ({ toggleHeader, hideHeader }) => {
   };
 
   const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
-
+  const boardNamesLinks = {
+    "Platform Launch": "/platform-launch",
+    "Marketing Plan": "/marketing-plan",
+    Roadmap: "/roadmap",
+  };
   return (
     <header className={`header ${theme} ${hideHeader ? "" : "hidden"}`}>
       <div className="header__content">
@@ -46,14 +47,16 @@ const Header = ({ toggleHeader, hideHeader }) => {
         <p>ALL BOARDS</p>
 
         {boardNames.map((board) => (
-          <button
-            className={`board ${
-              isActive === board ? "active" : ""
-            }`}
-            onClick={() => setIsActive(board)}
+          <NavLink
+            to={boardNamesLinks[board]}
+            key={board}
+            activeClassName="active"
           >
-            {boardIcon}{board}
-          </button>
+            <button className="board">
+              {boardIcon}
+              {board}
+            </button>
+          </NavLink>
         ))}
 
         <button className="create-board">{boardIcon}+ Create New Board</button>
