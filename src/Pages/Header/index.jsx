@@ -34,7 +34,7 @@ const Header = ({ toggleHeader, hideHeader }) => {
   const boardNamesLinks = {
     "Platform Launch": "/platform-launch",
     "Marketing Plan": "/marketing-plan",
-    Roadmap: "/roadmap",
+    "Roadmap": "/roadmap",
   };
   return (
     <header className={`header ${theme} ${hideHeader ? "" : "hidden"}`}>
@@ -50,7 +50,7 @@ const Header = ({ toggleHeader, hideHeader }) => {
           <NavLink
             to={boardNamesLinks[board]}
             key={board}
-            activeClassName="active"
+            activeclassname="active"
           >
             <button className="board">
               {boardIcon}
