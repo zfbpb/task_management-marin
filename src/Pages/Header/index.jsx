@@ -10,9 +10,13 @@ import { BoardImg } from "../../Icons/BoardIcon";
 import { HideSideBar } from "../../Icons/HideSideBar";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ toggleHeader, hideHeader }) => {
+const Header = ({ toggleHeader, hideHeader, setCreateBoard }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [checkMode, setCheckMode] = useState(theme === "dark-theme");
+  
+  const handleCreateBoardToggle = () => {
+    setCreateBoard((prev) => !prev);
+  };
 
   const boardIcon = <BoardImg />;
   const hideSidebarIcon = <HideSideBar />;
@@ -34,7 +38,7 @@ const Header = ({ toggleHeader, hideHeader }) => {
   const boardNamesLinks = {
     "Platform Launch": "/platform-launch",
     "Marketing Plan": "/marketing-plan",
-    "Roadmap": "/roadmap",
+    Roadmap: "/roadmap",
   };
   return (
     <header className={`header ${theme} ${hideHeader ? "" : "hidden"}`}>
@@ -59,7 +63,12 @@ const Header = ({ toggleHeader, hideHeader }) => {
           </NavLink>
         ))}
 
-        <button className="create-board">{boardIcon}+ Create New Board</button>
+        <button 
+          className="create-board" 
+          onClick={handleCreateBoardToggle}
+          >
+        {boardIcon}+ Create New Board
+        </button>
       </div>
       <div className="header__bottom">
         <div className="theme-toggle-wrapper">
