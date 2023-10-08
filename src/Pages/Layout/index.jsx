@@ -4,6 +4,7 @@ import Header from "../Header";
 import Main from "../Main";
 import { ThemeContext } from "../../Theme";
 import showIcon from "../../Icons/icon-show-sidebar.svg"
+import CreateBoard from "../../Components/CreateBoard";
 
 const Layout = () => {
   const {theme} = useContext(ThemeContext)
@@ -25,6 +26,7 @@ const showHeaderIcon = <img src={showIcon} alt="eye icon" />
         </button>
       )}
       <Main />
+      <CreateBoard/>
     </div>
   );
 };
