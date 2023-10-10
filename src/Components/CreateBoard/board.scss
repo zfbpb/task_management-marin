@@ -2,26 +2,37 @@
 
 .create-boardContainer {
     position: fixed;
-    // width: 30%; //should later change to fixed
     width: 300px;
+    padding: 1em;
     height: 30%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid red;
     border-radius: 10px;
-
-    //content
-    display: flex;
-
+    text-align: center;
     .board-title {
         margin: 5px auto;
-        display: block;
+        
     }
     .close-btn {
         cursor: pointer;
         position: absolute;
         top: 5px;
         right: 5px;
+    }
+    .board-form{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+    }
+    .submit-btn-wrapper{
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    .submit-btn-wrapper > button{
+        width: 100%;
     }
 }
