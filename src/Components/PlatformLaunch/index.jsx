@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./platform.scss";
 import initialData from "../../Assets/data/data.json";
+import Card from "../../Assets/drag-drop/Card";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const PlatformLaunch = () => {
   const [data, setData] = useState([]);
@@ -8,46 +11,31 @@ const PlatformLaunch = () => {
   useEffect(() => {
     // Load data
     setData(initialData);
-    //const savedData = localStorage.getItem("boards_data");
-    //setData(savedData ? JSON.parse(savedData) : initialData);
   }, []);
+  const moveCard = (fromIndex, toIndex) => {
+    const updatedTasks = Array.from(data.boards[0].columns[0].tasks);
+    const [movedItem] = updatedTasks.splice(fromIndex, 1);
+    updatedTasks.splice(toIndex, 0, movedItem);
 
-  /*   useEffect(() => {
-    // Save data to localStorage whenever it changes
-    localStorage.setItem("boards_data", JSON.stringify(data));
-  }, [data]); */
-
-  /*  // update function
-  const updateBoardName = (boardId, newName) => {
-    const updatedData = data.map((board) =>
-      board.id === boardId ? { ...board, name: newName } : board
-    );
-    setData(updatedData);
+    setData(prevData => ({
+      ...prevData,
+      boards: [{
+        ...prevData.boards[0],
+        columns: [{
+          ...prevData.boards[0].columns[0],
+          tasks: updatedTasks
+        }]
+      }]
+    }));
   };
- */
-  //console.log("some", initialData);
-  //console.log("boards", data.boards[0])
-
-  /* 
-  const { theme } = useContext(ThemeContext);
-  <div className={`platform-container ${theme}`}></div> 
-  */
   return (
     <div className="platform-container">
-      {data.boards && <h4>{data.boards[0].name}</h4>}
-
-      {/* <p>{data.boards?.[0].columns?.[0].tasks?.[0].title}</p>
-      <p>{data.boards?.[0].columns?.[0].tasks?.[1].title}</p>
-      <p>{data.boards?.[0].columns?.[0].tasks?.[2].title}</p>
-      <p>{data.boards?.[0].columns?.[0].tasks?.[3].title}</p> */}
-
-      {data.boards?.[0]?.columns?.[0]?.tasks?.map((task) => (
-        <p key={task.id}>{task.title}</p>
-      ))}
-
-      {/* {data.boards && data.boards.map((board) => (
-        <div key={board.id} className="board">{board[0]}</div>
-      ))} */}
+      <DndProvider backend={HTML5Backend}>
+        <h4 className="title">{data.boards?.[0].name}</h4>
+        {data.boards?.[0]?.columns?.[0]?.tasks?.map((task, index) => (
+          <Card id={index} key={task.id} className="task-title" text={task.title} moveCard={moveCard} />
+        ))}
+      </DndProvider>
     </div>
   );
 };
