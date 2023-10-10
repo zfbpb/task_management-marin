@@ -1,17 +1,27 @@
 @import '../../assets/colors/colors.scss';
 
-.create-boardContainer
-{
+.create-boardContainer {
     position: fixed;
-    width: 30%; //should later change to fixed
+    // width: 30%; //should later change to fixed
+    width: 300px;
     height: 30%;
-    top: 50%; 
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid red;
-    border-radius:10px;
-    
+    border-radius: 10px;
+
     //content
     display: flex;
-    justify-content: center;
+
+    .board-title {
+        margin: 5px auto;
+        display: block;
+    }
+    .close-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
 }

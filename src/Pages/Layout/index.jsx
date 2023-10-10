@@ -32,7 +32,7 @@ const Layout = () => {
         </button>
       )}
       <Main />
-      {createBoard && <CreateBoard />}
+      {createBoard && <CreateBoard setCreateBoard={setCreateBoard} />}
     </div>
   );
 };
