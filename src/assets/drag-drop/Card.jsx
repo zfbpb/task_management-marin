@@ -1,33 +1,49 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { ItemTypes } from '../constants/Constants';
 
-export default function Card({ id, text, moveCard }) {
-  const ref = React.useRef(null);
+export default function Card({ text, index, moveCard }) {
+  const ref = useRef(null);
 
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
     hover(item, monitor) {
-      if (!ref.current) {
+      if (!ref.current) return;
+      const dragIndex = item.index;
+      const hoverIndex = index;
+
+      if (dragIndex === hoverIndex) return;
+
+      // Determine rectangle on screen
+      const hoverBoundingRect = ref.current?.getBoundingClientRect();
+
+      // Get horizontal middle
+      const hoverMiddleY =
+        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
+      // Determine mouse position
+      const clientOffset = monitor.getClientOffset();
+
+      // Get pixels to the top
+      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+
+      if (
+        (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) ||
+        (dragIndex > hoverIndex && hoverClientY > hoverMiddleY)
+      ) {
         return;
       }
 
-      const dragIndex = item.id;
-      const hoverIndex = id;
-
-      if (dragIndex === hoverIndex) {
-        return;
-      }
-
+      // Swap the elements
       moveCard(dragIndex, hoverIndex);
 
-      item.id = hoverIndex;
+      item.index = hoverIndex;
     },
   });
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemTypes.CARD,
-    item: { id, text },
+    item: { type: ItemTypes.CARD, text, index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -36,8 +52,13 @@ export default function Card({ id, text, moveCard }) {
   drag(drop(ref));
 
   return (
-    <div ref={ref} className='task-title' style={{ opacity: isDragging ? 0.5 : 1 }}>
+    <div
+      ref={ref}
+      style={{ opacity: isDragging ? 0 : 1 }}
+      className="task-title"
+    >
       {text}
     </div>
   );
 }
+
