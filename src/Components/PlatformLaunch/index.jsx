@@ -34,7 +34,7 @@ const PlatformLaunch = () => {
       <DndProvider backend={HTML5Backend}>
         <h4 className="title">{data.boards?.[0].name}</h4>
         {data.boards?.[0]?.columns?.[0]?.tasks?.map((task, index) => (
-          <Card id={index} key={task.id} className="task-title" text={task.title} moveCard={moveCard} index={index}/>
+          <Card id={index} key={task.id} text={task.title} moveCard={moveCard} index={index}/>
         ))}
       </DndProvider>
     </div>
