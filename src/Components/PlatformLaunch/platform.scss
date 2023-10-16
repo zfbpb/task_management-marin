@@ -12,16 +12,5 @@
     p{
         color: white;
     }
-    .task-title{
-     // cursor: move;
-        padding: 10px;
-        width: 30%;
-        margin-top: 10px;
-        border: 1px solid red;
-        height: 10vh;
-        cursor: grab;
-    }
-    .task-title:active{
-        cursor: move;
-    }
+   
 }

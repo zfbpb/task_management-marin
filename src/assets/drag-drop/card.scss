@@ -1,9 +1,17 @@
-/* .task-title{
-    //cursor: move;
-    padding: 10px;
-    width: 30%;
-    margin-top: 10px;
-    border: 1px solid red;
-    background-color:blue;
-    height: 10vh;
-} */
+
+.task-title{
+    // cursor: move;
+       padding: 10px;
+       width: 30%;
+       margin-top: 10px;
+       border: 1px solid red;
+       height: 10vh;
+       cursor: grab;
+   }
+   .task-title:active{
+       cursor: context-menu;
+       opacity: 1;
+   }
+  /*  .task-title:focus{
+    cursor: context-menu;
+   } */
