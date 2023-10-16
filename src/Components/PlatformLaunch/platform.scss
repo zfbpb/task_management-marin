@@ -1,16 +1,31 @@
 @import '../../assets/colors/colors.scss';
 
 
-.platform-container{
+.platform-container {
     width: 100%;
     position: relative;
-    padding: 10px;
-//    height: 20vh;
+    height: 100vh;
     color: white;
-//    border: 1px solid white;
-
-    p{
+    //    border: 1px solid white;
+    h1{
+       padding: 1em;
+       border-bottom:1px solid $light-border; 
+       background-color:white;
+    }
+    p {
         color: white;
+    }
+
+    &.light-theme {
+        color: black;
+        background-color: $background3;
+    }
+    &.dark-theme{
+        h1{
+        background-color: $background2;
+        border-bottom: 1px solid $border;
+        border-left: 1px solid $border;
+    } 
     }
    
 }

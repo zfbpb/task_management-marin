@@ -1,8 +1,11 @@
 import { Draggable } from '@hello-pangea/dnd';
-import React from 'react';
+import React, { useContext } from 'react';
 import './card.scss'
 
+import { ThemeContext } from "../../Theme";
 export default function Card({ text, index, id }) {
+  const { theme} = useContext(ThemeContext);
+
   return (
     <Draggable draggableId={`item-${id}`} index={index}>
           {(provided, snapshot) => (
@@ -13,7 +16,7 @@ export default function Card({ text, index, id }) {
                   style={{
                       ...provided.draggableProps.style,                    
                   }}
-                  className='task-title'
+                  className={`task-title ${theme}`}
               >
                   {text}
               </div>
