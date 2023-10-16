@@ -3,24 +3,21 @@ import React from "react";
 import { ItemTypes } from "../constants/Constants";
 
 export function CustomDragLayer() {
-    const { item, initialOffset, currentOffset } = useDragLayer((monitor) => ({
+    const { item, differenceFromInitialOffset } = useDragLayer((monitor) => ({
       item: monitor.getItem(),
-      initialOffset: monitor.getInitialSourceClientOffset(),
-      currentOffset: monitor.getSourceClientOffset(),
+      differenceFromInitialOffset: monitor.getDifferenceFromInitialOffset(),
     }));
 
-    if (!item || !initialOffset || !currentOffset || item.type !== ItemTypes.CARD) {
-      return null;
-    }
-
-    const x = currentOffset.x;
-    const y = currentOffset.y;
+    if (!item || item.type !== ItemTypes.CARD) return null;
 
     const style = {
-      transform: `translate(${x}px, ${y}px)`,
+      transform: `translate(${differenceFromInitialOffset.x}px, ${differenceFromInitialOffset.y}px)`,
       position: 'fixed',
       pointerEvents: 'none',
       zIndex: 100,
+      left: 0,
+      top: 0,
+      opacity: 1
     };
 
     return <div style={style}>{item.text}</div>;
