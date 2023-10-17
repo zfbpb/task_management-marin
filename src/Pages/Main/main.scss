@@ -1,21 +1,13 @@
 @import '../../assets/colors/colors.scss';
 
-.mainContainer
-{
-    //position: absolute;
-    //position: absolute;
-    
-    //z-index: ;
-   width: 100%;
-    
-    
-    &.light-theme
-    {
+.mainContainer {
+    width: 100%;
+    display: flex;
+    //transition: width 0.3s ease;
+    position: relative; // for prevent header overflow
+
+    &.light-theme {
         background-color: white;
     }
-    
+
 }
-/* .mainContainer.shiftLeft {
-    //width: 100%;
-    margin-left: 0;  
-} */

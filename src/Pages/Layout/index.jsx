@@ -31,7 +31,7 @@ const Layout = () => {
           {showHeaderIcon}
         </button>
       )}
-      <Main hideHeader={hideHeader} />
+      <Main/>
       {createBoard && <CreateBoard setCreateBoard={setCreateBoard} />}
     </div>
   );
