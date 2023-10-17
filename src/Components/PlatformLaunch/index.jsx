@@ -3,25 +3,24 @@ import initialData from "../../Assets/data/data.json";
 import Card from "../../Assets/drag-drop/Card";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 import { ThemeContext } from "../../Theme";
-import './platform.scss'
+import "./platform.scss";
 
 const PlatformLaunch = () => {
-  const { theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const [data, setData] = useState(initialData);
 
   const moveCard = (fromIndex, toIndex) => {
-    setData(prevData => {
+    setData((prevData) => {
       const updatedBoards = [...prevData.boards];
       const updatedTasks = [...updatedBoards[0].columns[0].tasks];
       const [movedItem] = updatedTasks.splice(fromIndex, 1);
       updatedTasks.splice(toIndex, 0, movedItem);
-  
+
       updatedBoards[0].columns[0].tasks = updatedTasks;
-  
+
       return { ...prevData, boards: updatedBoards };
     });
   };
-  
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
@@ -30,13 +29,20 @@ const PlatformLaunch = () => {
 
   return (
     <div className={`platform-container ${theme}`}>
-      <h1 className="title">{data.boards?.[0].name}</h1>
+      <div className="title">
+        <h1>{data.boards?.[0].name}</h1>
+      </div>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="board">
           {(provided) => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
               {data.boards?.[0]?.columns?.[0]?.tasks?.map((task, index) => (
-                <Card key={task.id} id={task.id} text={task.title} index={index} />
+                <Card
+                  key={task.id}
+                  id={task.id}
+                  text={task.title}
+                  index={index}
+                />
               ))}
               {provided.placeholder}
             </div>
@@ -46,4 +52,4 @@ const PlatformLaunch = () => {
     </div>
   );
 };
-export default PlatformLaunch
+export default PlatformLaunch;

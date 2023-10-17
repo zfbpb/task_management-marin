@@ -2,11 +2,20 @@
 
 .mainContainer
 {
-    width: 100%;
+    //position: absolute;
+    //position: absolute;
+    
+    //z-index: ;
+   width: 100%;
     
     
     &.light-theme
     {
         background-color: white;
     }
+    
 }
+/* .mainContainer.shiftLeft {
+    //width: 100%;
+    margin-left: 0;  
+} */

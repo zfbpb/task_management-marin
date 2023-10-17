@@ -6,11 +6,11 @@ import MarketingPlan from "../../Components/MarketingPlan";
 import RoadMap from "../../Components/RoadMap";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-const Main = () => {
+const Main = ({ hideHeader }) => {
   const { theme } = useContext(ThemeContext);
-  
+//${hideHeader ? "" : "shiftLeft"}
   return (
-    <div className={`mainContainer ${theme}`}>
+    <div className={`mainContainer ${theme} `}>
       <Routes>
         <Route path="/" element={<Navigate to="/platform-launch" />} />
         <Route path="/platform-launch" element={<PlatformLaunch />} />
@@ -20,6 +20,5 @@ const Main = () => {
     </div>
   );
 };
-
 
 export default Main;

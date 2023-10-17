@@ -3,15 +3,24 @@
 
 .platform-container {
     width: 100%;
-    position: relative;
+    //position: relative;
     height: 100vh;
     color: white;
-    //    border: 1px solid white;
-    h1{
-       padding: 1em;
-       border-bottom:1px solid $light-border; 
-       background-color:white;
+
+    .title {
+        display: flex;
+        align-items: center;
+        padding: 2em;
+        height: 105px;
+        border-bottom: 1px solid $light-border;
+        background-color: white;
     }
+
+    h1 {
+        font-weight: 200;
+        font-size: 20px;
+    }
+
     p {
         color: white;
     }
@@ -20,12 +29,13 @@
         color: black;
         background-color: $background3;
     }
-    &.dark-theme{
-        h1{
-        background-color: $background2;
-        border-bottom: 1px solid $border;
-        border-left: 1px solid $border;
-    } 
+
+    &.dark-theme {
+        .title {
+            background-color: $background2;
+            border-bottom: 1px solid $border;
+            border-left: 1px solid $border;
+        }
     }
-   
+
 }
