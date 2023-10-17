@@ -1,17 +1,21 @@
+@import '../../assets/colors/colors.scss';
 
-.task-title{
+.task-title {
     // cursor: move;
-       padding: 10px;
-       width: 30%;
-       margin-top: 10px;
-       border: 1px solid red;
-       height: 10vh;
-       cursor: grab;
-   }
-   .task-title:active{
-       cursor: context-menu;
-       opacity: 1;
-   }
-  /*  .task-title:focus{
-    cursor: context-menu;
-   } */
+    margin: 10px;
+    padding: 10px;
+    width: 30%;
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 10vh;
+    cursor: grab;
+
+    &.dark-theme {
+        background-color: $background2;
+    }
+
+    &.light-theme {
+        background-color: $text;
+    }
+
+}

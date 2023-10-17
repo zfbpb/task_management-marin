@@ -1,16 +1,41 @@
 @import '../../assets/colors/colors.scss';
 
 
-.platform-container{
+.platform-container {
     width: 100%;
-    position: relative;
-    padding: 10px;
-//    height: 20vh;
+    //position: relative;
+    height: 100vh;
     color: white;
-//    border: 1px solid white;
 
-    p{
+    .title {
+        display: flex;
+        align-items: center;
+        padding: 2em;
+        height: 105px;
+        border-bottom: 1px solid $light-border;
+        background-color: white;
+    }
+
+    h1 {
+        font-weight: 200;
+        font-size: 20px;
+    }
+
+    p {
         color: white;
     }
-   
+
+    &.light-theme {
+        color: black;
+        background-color: $background3;
+    }
+
+    &.dark-theme {
+        .title {
+            background-color: $background2;
+            border-bottom: 1px solid $border;
+            border-left: 1px solid $border;
+        }
+    }
+
 }
