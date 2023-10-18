@@ -6,9 +6,8 @@ import MarketingPlan from "../../Components/MarketingPlan";
 import RoadMap from "../../Components/RoadMap";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-const Main = ({ hideHeader }) => {
+const Main = () => {
   const { theme } = useContext(ThemeContext);
-//${hideHeader ? "" : "shiftLeft"}
   return (
     <div className={`mainContainer ${theme} `}>
       <Routes>

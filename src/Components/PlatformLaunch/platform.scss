@@ -3,7 +3,6 @@
 
 .platform-container {
     width: 100%;
-    //position: relative;
     height: 100vh;
     color: white;
 
@@ -22,6 +21,9 @@
     }
 
     p {
+        margin: 10px;
+        display: flex;
+        align-items: center;
         color: white;
     }
 
@@ -36,6 +38,14 @@
             border-bottom: 1px solid $border;
             border-left: 1px solid $border;
         }
+    }
+
+    .blue-ball {   
+        margin-right: 10px;
+        background-color: #49C4E5;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
     }
 
 }
