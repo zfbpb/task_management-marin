@@ -26,12 +26,14 @@ const PlatformLaunch = () => {
     if (!result.destination) return;
     moveCard(result.source.index, result.destination.index);
   };
-
+  
   return (
     <div className={`platform-container ${theme}`}>
       <div className="title">
         <h1>{data.boards?.[0].name}</h1>
       </div>
+      {/* board name */}
+      <p><span className="blue-ball"></span>{data.boards?.[0].columns[0].name}(num)</p>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="board">
           {(provided) => (
@@ -46,6 +48,7 @@ const PlatformLaunch = () => {
               ))}
               {provided.placeholder}
             </div>
+            
           )}
         </Droppable>
       </DragDropContext>
