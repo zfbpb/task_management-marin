@@ -61,7 +61,8 @@ const PlatformLaunch = () => {
           <div className="column-wrapper">
             <p>
               <span className="ball blue-ball"></span>
-              {data.boards?.[0].columns[0].name}(num)
+              {data.boards?.[0].columns[0].name}(
+              {data.boards?.[0].columns[0].tasks?.length})
             </p>
 
             <Droppable droppableId={data.boards[0].columns[0].id.toString()}>
@@ -83,7 +84,8 @@ const PlatformLaunch = () => {
           <div className="column-wrapper">
             <p>
               <span className="ball purple-ball"></span>
-              {data.boards?.[0].columns[1].name}(num)
+              {data.boards?.[0].columns[1].name}(
+              {data.boards?.[0].columns[1].tasks?.length})
             </p>
 
             <Droppable droppableId={data.boards[0].columns[1].id.toString()}>
@@ -105,7 +107,8 @@ const PlatformLaunch = () => {
           <div className="column-wrapper">
             <p>
               <span className="ball green-ball"></span>
-              {data.boards?.[0].columns[2].name}(num)
+              {data.boards?.[0].columns[2].name}(
+              {data.boards?.[0].columns[2].tasks?.length})
             </p>
             <Droppable droppableId={data.boards[0].columns[2].id.toString()}>
               {(provided) => (
