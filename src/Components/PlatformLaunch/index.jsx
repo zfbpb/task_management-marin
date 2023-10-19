@@ -9,19 +9,6 @@ const PlatformLaunch = () => {
   const { theme } = useContext(ThemeContext);
   const [data, setData] = useState(initialData);
 
-  /*  const moveCard = (fromIndex, toIndex) => {
-    setData((prevData) => {
-      const updatedBoards = [...prevData.boards];
-      const updatedTasks = [...updatedBoards[0].columns[0].tasks];
-      const [movedItem] = updatedTasks.splice(fromIndex, 1);
-      updatedTasks.splice(toIndex, 0, movedItem);
-
-      updatedBoards[0].columns[0].tasks = updatedTasks;
-
-      return { ...prevData, boards: updatedBoards };
-    });
-  }; */
-
   const onDragEnd = (result) => {
     const { source, destination } = result;
 
@@ -47,6 +34,9 @@ const PlatformLaunch = () => {
       return { ...prevData, boards: updatedBoards };
     });
   };
+  const columnOneNum = data.boards?.[0].columns[0].tasks?.length;
+  const columnTwoNum = data.boards?.[0].columns[1].tasks?.length;
+  const columnThreeNum = data.boards?.[0].columns[2].tasks?.length;
 
   return (
     <div className={`platform-container ${theme}`}>
@@ -61,8 +51,7 @@ const PlatformLaunch = () => {
           <div className="column-wrapper">
             <p>
               <span className="ball blue-ball"></span>
-              {data.boards?.[0].columns[0].name}(
-              {data.boards?.[0].columns[0].tasks?.length})
+              {data.boards?.[0].columns[0].name}({columnOneNum})
             </p>
 
             <Droppable droppableId={data.boards[0].columns[0].id.toString()}>
@@ -84,8 +73,7 @@ const PlatformLaunch = () => {
           <div className="column-wrapper">
             <p>
               <span className="ball purple-ball"></span>
-              {data.boards?.[0].columns[1].name}(
-              {data.boards?.[0].columns[1].tasks?.length})
+              {data.boards?.[0].columns[1].name}({columnTwoNum})
             </p>
 
             <Droppable droppableId={data.boards[0].columns[1].id.toString()}>
@@ -107,8 +95,7 @@ const PlatformLaunch = () => {
           <div className="column-wrapper">
             <p>
               <span className="ball green-ball"></span>
-              {data.boards?.[0].columns[2].name}(
-              {data.boards?.[0].columns[2].tasks?.length})
+              {data.boards?.[0].columns[2].name}({columnThreeNum})
             </p>
             <Droppable droppableId={data.boards[0].columns[2].id.toString()}>
               {(provided) => (
