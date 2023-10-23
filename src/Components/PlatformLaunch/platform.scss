@@ -5,32 +5,37 @@
     width: 100%;
     height: 100vh;
     color: white;
-    //justify-content: space-between;
-   .platform-overflow{
-    overflow: auto;
-    height: 85vh;
+    //justify-content: space-around;
+   
+    .platform-overflow{
+        height: 85vh;
+        overflow-y: auto;
+    } 
     
-   // background-color: yellow;
-   } 
     .platform-wrapper {
-        padding: 10px;
+        padding: 10px ;
         display: flex;
         gap: 1rem;
     }
 
     .column-wrapper {
         display: flex;
+        width: 100%;
+        //align-items: center;
+       // background-color: #49C4E5;
         flex-direction: column;
         gap: 1rem;
     }
 
     .new-column {
-        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 70vh;
+        width: 100%;
+        //margin: 10px;
         padding: 10px;
         border-radius: 10px;
-        width: 100px;
-        height: 60vh;
-        //font-size: clamp(1.2rem, 3vw, 1.5rem);
         color: #828fa3;
         background: linear-gradient(to bottom, rgba(121, 132, 147, 0.2), rgba(130, 143, 163, 0.1), rgba(130, 143, 163, 0));
         background-color: $background2;

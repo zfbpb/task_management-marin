@@ -43,81 +43,83 @@ const PlatformLaunch = () => {
       <div className="title">
         <h1>{data.boards?.[0].name}</h1>
       </div>
-    <div className="platform-overflow">
-      {/* board name */}
-      {/* <div className="board-name">
-      </div> */}
-      <div className="platform-wrapper">
-        <DragDropContext onDragEnd={onDragEnd}>
-          <div className="column-wrapper">
-            <p>
-              <span className="ball blue-ball"></span>
-              {data.boards?.[0].columns[0].name}({columnOneNum})
-            </p>
+      <div className="platform-overflow">
+        <div className="platform-wrapper">
+          <DragDropContext onDragEnd={onDragEnd}>
+            <div className="column-wrapper">
+              <p>
+                <span className="ball blue-ball"></span>
+                {data.boards?.[0].columns[0].name}({columnOneNum})
+              </p>
+              <Droppable droppableId={data.boards[0].columns[0].id.toString()}>
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {data.boards?.[0]?.columns?.[0]?.tasks?.map(
+                      (task, index) => (
+                        <Card
+                          key={task.id}
+                          id={task.id}
+                          text={task.title}
+                          index={index}
+                        />
+                      )
+                    )}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </div>
+            <div className="column-wrapper">
+              <p>
+                <span className="ball purple-ball"></span>
+                {data.boards?.[0].columns[1].name}({columnTwoNum})
+              </p>
 
-            <Droppable droppableId={data.boards[0].columns[0].id.toString()}>
-              {(provided) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  {data.boards?.[0]?.columns?.[0]?.tasks?.map((task, index) => (
-                    <Card
-                      key={task.id}
-                      id={task.id}
-                      text={task.title}
-                      index={index}
-                    />
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </div>
-          <div className="column-wrapper">
-            <p>
-              <span className="ball purple-ball"></span>
-              {data.boards?.[0].columns[1].name}({columnTwoNum})
-            </p>
-
-            <Droppable droppableId={data.boards[0].columns[1].id.toString()}>
-              {(provided) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  {data.boards?.[0]?.columns?.[1]?.tasks?.map((task, index) => (
-                    <Card
-                      key={task.id}
-                      id={task.id}
-                      text={task.title}
-                      index={index}
-                    />
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </div>
-          <div className="column-wrapper">
-            <p>
-              <span className="ball green-ball"></span>
-              {data.boards?.[0].columns[2].name}({columnThreeNum})
-            </p>
-            <Droppable droppableId={data.boards[0].columns[2].id.toString()}>
-              {(provided) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  {data.boards?.[0]?.columns?.[2]?.tasks?.map((task, index) => (
-                    <Card
-                      key={task.id}
-                      id={task.id}
-                      text={task.title}
-                      index={index}
-                    />
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </div>
-        </DragDropContext>
-        <div className="new-column">New Column +</div>
+              <Droppable droppableId={data.boards[0].columns[1].id.toString()}>
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {data.boards?.[0]?.columns?.[1]?.tasks?.map(
+                      (task, index) => (
+                        <Card
+                          key={task.id}
+                          id={task.id}
+                          text={task.title}
+                          index={index}
+                        />
+                      )
+                    )}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </div>
+            <div className="column-wrapper">
+              <p>
+                <span className="ball green-ball"></span>
+                {data.boards?.[0].columns[2].name}({columnThreeNum})
+              </p>
+              <Droppable droppableId={data.boards[0].columns[2].id.toString()}>
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {data.boards?.[0]?.columns?.[2]?.tasks?.map(
+                      (task, index) => (
+                        <Card
+                          key={task.id}
+                          id={task.id}
+                          text={task.title}
+                          index={index}
+                        />
+                      )
+                    )}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </div>
+          </DragDropContext>
+          <div className="new-column">New Column +</div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };
