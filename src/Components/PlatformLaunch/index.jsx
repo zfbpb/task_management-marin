@@ -43,6 +43,7 @@ const PlatformLaunch = () => {
       <div className="title">
         <h1>{data.boards?.[0].name}</h1>
       </div>
+    <div className="platform-overflow">
       {/* board name */}
       {/* <div className="board-name">
       </div> */}
@@ -116,6 +117,7 @@ const PlatformLaunch = () => {
         </DragDropContext>
         <div className="new-column">New Column +</div>
       </div>
+    </div>
     </div>
   );
 };
