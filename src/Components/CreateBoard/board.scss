@@ -8,9 +8,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: $background;
     border: 1px solid red;
     border-radius: 10px;
     text-align: center;
+    
     .board-title {
         margin: 5px auto;
         

@@ -20,7 +20,7 @@ const Layout = () => {
 
   const showHeaderIcon = <img src={showIcon} alt="eye icon" />;
   return (
-    <div className={`layoutContainer ${theme}`}>
+    <div className={`layoutContainer ${theme} ${createBoard ? 'blur' : ''}`}>
       <Header
         toggleHeader={toggleHeader}
         hideHeader={hideHeader}
