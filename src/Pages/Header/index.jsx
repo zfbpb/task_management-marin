@@ -10,10 +10,10 @@ import { BoardImg } from "../../Icons/BoardIcon";
 import { HideSideBar } from "../../Icons/HideSideBar";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ toggleHeader, hideHeader, setCreateBoard }) => {
+const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [checkMode, setCheckMode] = useState(theme === "dark-theme");
-  
+
   const handleCreateBoardToggle = () => {
     setCreateBoard((prev) => !prev);
   };
@@ -62,12 +62,21 @@ const Header = ({ toggleHeader, hideHeader, setCreateBoard }) => {
             </button>
           </NavLink>
         ))}
-
-        <button 
-          className="create-board" 
-          onClick={handleCreateBoardToggle}
+        {/* Dynamically created boards */}
+        {boards.map((board) => (
+          <NavLink
+            to={`/${board.route}`}
+            key={board.route}
+            activeclassname="active"
           >
-        {boardIcon}+ Create New Board
+            <button className="board">
+              {boardIcon}
+              {board.name}
+            </button>
+          </NavLink>
+        ))}
+        <button className="create-board" onClick={handleCreateBoardToggle}>
+          {boardIcon}+ Create New Board
         </button>
       </div>
       <div className="header__bottom">

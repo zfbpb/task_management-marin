@@ -7,6 +7,12 @@
   font-family: Plus Jakarta Sans, sans-serif;
   overflow: hidden;
 }
-
-
-  
+// h1 tag
+.title {
+  display: flex;
+  align-items: center;
+  padding: 2em;
+  height: 105px;
+  border-bottom: 1px solid $light-border;
+  background-color: white;
+}

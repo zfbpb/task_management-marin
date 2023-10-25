@@ -1,16 +1,38 @@
 import React from "react";
 import "./board.scss";
-const CreateBoard = ({ setCreateBoard }) => {
+import { useNavigate } from "react-router-dom";
+const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
+const navigate = useNavigate() // for new boards route
   const handleClose = () => {
     setCreateBoard(false);
   };
+
+  // create new routes
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    //const columns = e.target.columns.value;
+
+  /*   const boardData = {
+      route: name.toLowerCase().replace(/ /g, "-"), // convert "New Board" to "new-board"
+      name,
+      columns,
+    }; */
+    const route = name.toLowerCase().replace(/ /g, "-")
+    const boardData = {route ,name}
+
+    onCreateBoard(boardData);
+    navigate(`/${route}`)
+  };
+
   return (
     <div className="create-boardContainer">
       <p className="board-title">Add New Board</p>
       <button className="close-btn" onClick={handleClose}>
         X
       </button>
-      <form action="" className="board-form">
+      <form action="" className="board-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" />
 
@@ -18,7 +40,7 @@ const CreateBoard = ({ setCreateBoard }) => {
         <input type="text" id="columns" name="columns" />
         <div className="submit-btn-wrapper">
           <button>+ Add New Column</button>
-          <button>Create New Board</button>
+          <button type="submit">Create New Board</button>
         </div>
       </form>
     </div>
