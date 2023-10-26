@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./layout.scss";
 import Header from "../Header";
 import Main from "../Main";
@@ -13,6 +13,7 @@ const Layout = () => {
   const [showButton, setShowButton] = useState(false);
   const [createBoard, setCreateBoard] = useState(false);
   const [boards, setBoards] = useState([]); // for keeping tack of the boards
+  const showHeaderIcon = <img src={showIcon} alt="eye icon" />;
 
   const toggleHeader = () => {
     setHideHeader((prev) => !prev);
@@ -22,8 +23,14 @@ const Layout = () => {
   const handleCreateBoard = (boardData) => {
     setBoards((prevBoards) => [...prevBoards, boardData]);
   };
+  
+  // Load boards from Local Storage
+  useEffect(() => {
+    const storedBoards = JSON.parse(localStorage.getItem("boards") || "[]");
+    setBoards(storedBoards);
+}, []);
 
-  const showHeaderIcon = <img src={showIcon} alt="eye icon" />;
+
   return (
     <div className={`layoutContainer ${theme} ${createBoard ? 'blur' : ''}`}>
       <Header

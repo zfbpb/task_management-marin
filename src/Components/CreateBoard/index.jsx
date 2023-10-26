@@ -1,6 +1,7 @@
 import React from "react";
 import "./board.scss";
 import { useNavigate } from "react-router-dom";
+
 const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
 const navigate = useNavigate() // for new boards route
   const handleClose = () => {
@@ -22,8 +23,16 @@ const navigate = useNavigate() // for new boards route
     const route = name.toLowerCase().replace(/ /g, "-")
     const boardData = {route ,name}
 
+    const existingBoards = JSON.parse(localStorage.getItem("boards") || "[]")
+    existingBoards.push(boardData)
+
+    //console.log("boardData", boardData)
+
+    localStorage.setItem("boards", JSON.stringify(existingBoards))
+
     onCreateBoard(boardData);
     navigate(`/${route}`)
+    handleClose()
   };
 
   return (
