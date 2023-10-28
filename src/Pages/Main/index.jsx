@@ -10,6 +10,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 //boards for keeping track of existing and a new boards
 const Main = ({ boards }) => {
   const { theme } = useContext(ThemeContext);
+
+  
   return (
     <div className={`mainContainer ${theme} `}>
       <Routes>
