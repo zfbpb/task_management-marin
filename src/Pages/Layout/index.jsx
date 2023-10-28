@@ -31,6 +31,13 @@ const Layout = () => {
 }, []);
 
 
+const deleteBoard = (boardName) => {
+  const updatedBoards = boards.filter(board => board.name !== boardName);
+  setBoards(updatedBoards);
+  localStorage.setItem('boards', JSON.stringify(updatedBoards));
+};
+
+
   return (
     <div className={`layoutContainer ${theme} ${createBoard ? 'blur' : ''}`}>
       <Header
@@ -44,7 +51,7 @@ const Layout = () => {
           {showHeaderIcon}
         </button>
       )}
-      <Main boards={boards}/>
+      <Main boards={boards} deleteBoard={deleteBoard} />
       {createBoard && <CreateBoard setCreateBoard={setCreateBoard} onCreateBoard={handleCreateBoard}/>}
     </div>
   );
