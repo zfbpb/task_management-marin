@@ -7,7 +7,9 @@
   font-family: Plus Jakarta Sans, sans-serif;
   overflow: hidden;
 }
+
 // h1 tag
+
 .title {
   display: flex;
   align-items: center;
@@ -15,4 +17,36 @@
   height: 105px;
   border-bottom: 1px solid $light-border;
   background-color: white;
+
+  h1 {
+    font-weight: 200;
+    font-size: 20px;
+  }
+}
+
+.dark-theme {
+  .title {
+    background-color: $background2;
+    border-bottom: 1px solid $border;
+    border-left: 1px solid $border;
+  }
+}
+
+.ball {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.blue-ball {
+  background-color: #49C4E5;
+}
+
+.purple-ball {
+  background-color: $active;
+}
+
+.green-ball {
+  background-color: #67e2ae;
 }

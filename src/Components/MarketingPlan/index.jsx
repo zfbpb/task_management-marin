@@ -1,9 +1,16 @@
-import React from 'react'
-
+import React from "react";
+import initialData from "../../Assets/data/data.json";
+import "./marketing.scss"
 const MarketingPlan = () => {
+  const data = initialData;
   return (
-    <div>MarketingPlan</div>
-  )
-}
+    <div className="marketing-container">
+      <div className="title">
+        <h1>{data.boards?.[1].name}</h1>
+      </div>
+      
+    </div>
+  );
+};
 
-export default MarketingPlan
+export default MarketingPlan;

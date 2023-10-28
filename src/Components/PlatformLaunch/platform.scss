@@ -65,30 +65,4 @@
         background-color: $background3;
     }
 
-    &.dark-theme {
-        .title {
-            background-color: $background2;
-            border-bottom: 1px solid $border;
-            border-left: 1px solid $border;
-        }
-    }
-
-    .ball {
-        margin-right: 10px;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-    }
-
-    .blue-ball {
-        background-color: #49C4E5;
-    }
-
-    .purple-ball {
-        background-color: $active;
-    }
-
-    .green-ball {
-        background-color: #67e2ae;
-    }
 }
