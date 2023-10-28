@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewBoard = ({board}) => {
+const NewBoard = () => {
   return (
     <div>NewBoard</div>
   )
