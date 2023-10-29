@@ -1,39 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import initialData from "../../Assets/data/data.json";
 import Card from "../../Assets/drag-drop/Card";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 import { ThemeContext } from "../../Theme";
 import "./platform.scss";
+import useDragEnd from "../../Assets/drag-end/useDragEnd";
+/* import ScrollContainer from "react-indiana-drag-scroll"; */
 
 const PlatformLaunch = () => {
   const { theme } = useContext(ThemeContext);
-  const [data, setData] = useState(initialData);
-
-  const onDragEnd = (result) => {
-    const { source, destination } = result;
-
-    // Ignore if the item is dropped outside a column or if there's no destination
-    if (!destination) return;
-
-    setData((prevData) => {
-      const updatedBoards = [...prevData.boards];
-
-      // Identify source and destination columns
-      const sourceColumn = updatedBoards[0].columns.find(
-        (column) => column.id.toString() === source.droppableId
-      );
-      const destinationColumn = updatedBoards[0].columns.find(
-        (column) => column.id.toString() === destination.droppableId
-      );
-
-      if (sourceColumn && destinationColumn) {
-        const [movedTask] = sourceColumn.tasks.splice(source.index, 1);
-        destinationColumn.tasks.splice(destination.index, 0, movedTask);
-      }
-
-      return { ...prevData, boards: updatedBoards };
-    });
-  };
+  const [data, handleDragEnd] = useDragEnd(initialData)
+ 
   const columnOneNum = data.boards?.[0].columns[0].tasks?.length;
   const columnTwoNum = data.boards?.[0].columns[1].tasks?.length;
   const columnThreeNum = data.boards?.[0].columns[2].tasks?.length;
@@ -43,9 +20,10 @@ const PlatformLaunch = () => {
       <div className="title">
         <h1>{data.boards?.[0].name}</h1>
       </div>
+     
       <div className="platform-wrapper-vertical">
         <div className="platform-wrapper-horizontal">
-          <DragDropContext onDragEnd={onDragEnd}>
+          <DragDropContext onDragEnd={handleDragEnd}>
             <div className="column-wrapper">
               <p>
                 <span className="ball blue-ball"></span>
@@ -53,7 +31,7 @@ const PlatformLaunch = () => {
               </p>
               <Droppable droppableId={data.boards[0].columns[0].id.toString()}>
                 {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                  <div ref={provided.innerRef} {...provided.droppableProps} className="card-placeholder">
                     {data.boards?.[0]?.columns?.[0]?.tasks?.map(
                       (task, index) => (
                         <Card
@@ -78,7 +56,7 @@ const PlatformLaunch = () => {
 
               <Droppable droppableId={data.boards[0].columns[1].id.toString()}>
                 {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                  <div ref={provided.innerRef} {...provided.droppableProps} className="card-placeholder">
                     {data.boards?.[0]?.columns?.[1]?.tasks?.map(
                       (task, index) => (
                         <Card
@@ -101,7 +79,7 @@ const PlatformLaunch = () => {
               </p>
               <Droppable droppableId={data.boards[0].columns[2].id.toString()}>
                 {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                  <div ref={provided.innerRef} {...provided.droppableProps} className="card-placeholder">
                     {data.boards?.[0]?.columns?.[2]?.tasks?.map(
                       (task, index) => (
                         <Card
@@ -121,6 +99,7 @@ const PlatformLaunch = () => {
           <div className="new-column">New Column +</div>
         </div>
         </div>
+       
     </div>
   );
 };

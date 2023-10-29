@@ -52,6 +52,7 @@ const deleteBoard = (boardName) => {
         </button>
       )}
       <Main boards={boards} deleteBoard={deleteBoard} />
+      
       {createBoard && <CreateBoard setCreateBoard={setCreateBoard} onCreateBoard={handleCreateBoard}/>}
     </div>
   );

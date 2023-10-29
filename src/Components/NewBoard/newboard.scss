@@ -3,14 +3,7 @@
 .newboard-container {
     width: 100%;
     position: relative;
-    .title {
-        display: flex;                 
-        justify-content: space-between; 
-        align-items: center;          
-    }
-   /*  .newboard-wrapper{
-        display: flex;
-    } */
+   
     .dropdown-menu{
         position: absolute;
         top: 80px;
@@ -37,15 +30,7 @@
             visibility: visible;
         }
     }
-    .three-dots-button {
-        display: flex;
-        align-items: center;
-        background-color: transparent;
-        border: 0px;
-        justify-content: center;
-        cursor: pointer;
-    }
-
+    
     &.dark-theme {
         .three-dots {
             color: $background3;
@@ -55,3 +40,14 @@
         cursor: pointer;
     }
 }
+.three-dots-button {
+        z-index: 9999;
+        position: sticky;
+        right: 0;
+
+        align-items: center;
+        background-color: transparent;
+        border: 0px;
+        justify-content: center;
+        cursor: pointer;
+    }

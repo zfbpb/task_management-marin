@@ -14,6 +14,7 @@
   transition: padding 0.3s ease-out, height 0.3s ease-out;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 2em;
   height: 105px;
   border-bottom: 1px solid $light-border;
@@ -50,6 +51,11 @@
 
 .green-ball {
   background-color: #67e2ae;
+}
+
+// wrapper for card components
+.card-placeholder {
+  min-height: 100%; // to ensure card can be back to column no matter is empty 
 }
 
 @media screen and (max-width: 800px) {
