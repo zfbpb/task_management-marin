@@ -43,8 +43,8 @@ const PlatformLaunch = () => {
       <div className="title">
         <h1>{data.boards?.[0].name}</h1>
       </div>
-      <div className="platform-overflow">
-        <div className="platform-wrapper">
+      <div className="platform-wrapper-vertical">
+        <div className="platform-wrapper-horizontal">
           <DragDropContext onDragEnd={onDragEnd}>
             <div className="column-wrapper">
               <p>

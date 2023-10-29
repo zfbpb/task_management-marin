@@ -2,38 +2,41 @@
 
 
 .platform-container {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     color: white;
-    //justify-content: space-around;
-   
-    .platform-overflow{
-        height: 85vh;
-        overflow-y: auto;
-    } 
     
-    .platform-wrapper {
-        padding: 10px ;
+
+    .platform-wrapper-vertical {
+        flex-grow: 1;
+        overflow-y: auto;
+        height: 85vh;
+    }
+
+    .platform-wrapper-horizontal {
+        overflow-x: auto;
         display: flex;
         gap: 1rem;
+        padding: 10px;
+        min-height: 88vh;
+        cursor: move;
     }
 
     .column-wrapper {
-        display: flex;
         width: 100%;
-        //align-items: center;
-       // background-color: #49C4E5;
-        flex-direction: column;
+        min-width: 200px;
         gap: 1rem;
     }
 
     .new-column {
+        min-width: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 70vh;
         width: 100%;
-        //margin: 10px;
         padding: 10px;
         border-radius: 10px;
         color: #828fa3;
@@ -45,8 +48,6 @@
         display: flex;
         justify-content: space-between;
     }
-
-  
 
     h1 {
         font-weight: 200;
@@ -65,4 +66,10 @@
         background-color: $background3;
     }
 
+}
+
+@media screen and (max-width:800px) {
+    .platform-wrapper-horizontal{
+        height: 100vh;
+    }
 }

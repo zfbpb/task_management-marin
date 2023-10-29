@@ -8,10 +8,10 @@ import NewBoard from "../../Components/NewBoard";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 //boards for keeping track of existing and a new boards
-const Main = ({ boards, deleteBoard }) => {
-  const { theme } = useContext(ThemeContext);
+const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
+  const { theme } = useContext(ThemeContext); 
 
-  
+ 
   return (
     <div className={`mainContainer ${theme} `}>
       <Routes>
@@ -22,8 +22,8 @@ const Main = ({ boards, deleteBoard }) => {
         {boards.map((board) => (
           <Route
             key={board.route}
-            path={`/${board.route}`}
-            element={<NewBoard data={board} deleteBoard={deleteBoard}/>}
+            path={`/${board.route}`} // path={`/boards/:boardRoute`}
+            element={<NewBoard data={board} deleteBoard={deleteBoard} setSelectedBoard={setSelectedBoard}/>}
           />
         ))}
       </Routes>

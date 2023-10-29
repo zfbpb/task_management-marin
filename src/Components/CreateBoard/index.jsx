@@ -13,13 +13,7 @@ const navigate = useNavigate() // for new boards route
     e.preventDefault();
 
     const name = e.target.name.value;
-    //const columns = e.target.columns.value;
-
-  /*   const boardData = {
-      route: name.toLowerCase().replace(/ /g, "-"), // convert "New Board" to "new-board"
-      name,
-      columns,
-    }; */
+   
     const route = name.toLowerCase().replace(/ /g, "-")
     const boardData = {route ,name}
 

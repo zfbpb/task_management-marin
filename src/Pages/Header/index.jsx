@@ -21,9 +21,9 @@ const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards }) => {
   const boardIcon = <BoardImg />;
   const hideSidebarIcon = <HideSideBar />;
 
-  const kanbanLogoLightIcon = <img src={kanbanLogoLight} alt="kanban logo" />;
+  const kanbanLogoLightIcon = <img src={kanbanLogoLight} alt="kanban logo" className="kanban-logo-light" />;
   const kanbanLogoDarkIcon = (
-    <img src={kanbanLogoDark} alt="kanban logo dark" />
+    <img src={kanbanLogoDark} alt="kanban logo dark" className="kanban-logo-dark"/>
   );
 
   const sunIcon = <img src={sun} alt="sun icon" className="sunIcon" />;
