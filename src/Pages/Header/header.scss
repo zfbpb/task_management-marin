@@ -113,15 +113,8 @@
 
     color: $text2;
     font-weight: 700;
-
-    img {
-      margin-right: 1.5em;
-    }
   }
 
-  h1 {
-    padding-bottom: 1em;
-  }
 
   p {
     margin: 1em;
@@ -179,7 +172,15 @@
   p,
   .hideSidebarBtn {
     padding: 1em;
+    transition: padding 0.3s ease-out, height 0.3s ease-out;
   }
 
-
+  @media screen and (max-width: 800px) {
+    h1{
+     
+      padding: 5px;
+      height: 5vh;
+    }
+  }
 }
+

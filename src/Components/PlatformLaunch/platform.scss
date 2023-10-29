@@ -9,7 +9,11 @@
    
     .platform-overflow{
         height: 85vh;
+        //width: 84vw;
         overflow-y: auto;
+        overflow-x: auto;
+        cursor: move;
+        
     } 
     
     .platform-wrapper {
@@ -21,6 +25,9 @@
     .column-wrapper {
         display: flex;
         width: 100%;
+//                                          new 
+      //  min-width: 200px;
+
         //align-items: center;
        // background-color: #49C4E5;
         flex-direction: column;
@@ -28,6 +35,8 @@
     }
 
     .new-column {
+        min-width: 200px;
+
         display: flex;
         align-items: center;
         justify-content: center;
