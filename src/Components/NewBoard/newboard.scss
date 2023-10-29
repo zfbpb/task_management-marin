@@ -2,52 +2,6 @@
 
 .newboard-container {
     width: 100%;
-    position: relative;
+
    
-    .dropdown-menu{
-        position: absolute;
-        top: 80px;
-        right: 0;
-        margin-right: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 5px;
-        background-color: black;
-        border-radius:10px;
-        padding: 10px;
-        width: 20vw;
-        height: 10vh;
-        transition: 1s ease-in-out;
-        
-        //animation start
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.3 ease-in-out;
-
-        &.visible{
-            opacity: 1;
-            visibility: visible;
-        }
-    }
-    
-    &.dark-theme {
-        .three-dots {
-            color: $background3;
-        }
-    }
-    .deleteButton, .editButton{
-        cursor: pointer;
-    }
 }
-.three-dots-button {
-        z-index: 9999;
-        position: sticky;
-        right: 0;
-
-        align-items: center;
-        background-color: transparent;
-        border: 0px;
-        justify-content: center;
-        cursor: pointer;
-    }
