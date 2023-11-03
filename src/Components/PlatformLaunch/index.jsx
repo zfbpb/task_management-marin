@@ -8,6 +8,8 @@ import "./platform.scss";
 const PlatformLaunch = () => {
   const { theme } = useContext(ThemeContext);
   //const [data, setData] = useState(initialData);
+
+  //checking first is there any stored data before initialData loads
   const [data, setData] = useState(() => {
     const localStorageData = localStorage.getItem("boardData")
     return localStorageData ? JSON.parse(localStorageData) : initialData
