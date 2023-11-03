@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import initialData from "../../Assets/data/data.json";
 import Card from "../../Assets/drag-drop/Card";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
@@ -7,8 +7,11 @@ import "./platform.scss";
 
 const PlatformLaunch = () => {
   const { theme } = useContext(ThemeContext);
-  const [data, setData] = useState(initialData);
-
+  //const [data, setData] = useState(initialData);
+  const [data, setData] = useState(() => {
+    const localStorageData = localStorage.getItem("boardData")
+    return localStorageData ? JSON.parse(localStorageData) : initialData
+  });
   const onDragEnd = (result) => {
     const { source, destination } = result;
 
@@ -34,6 +37,10 @@ const PlatformLaunch = () => {
       return { ...prevData, boards: updatedBoards };
     });
   };
+  useEffect(() =>{
+    localStorage.setItem("boardData", JSON.stringify(data))
+  },[data])
+
   const columnOneNum = data.boards?.[0].columns[0].tasks?.length;
   const columnTwoNum = data.boards?.[0].columns[1].tasks?.length;
   const columnThreeNum = data.boards?.[0].columns[2].tasks?.length;
