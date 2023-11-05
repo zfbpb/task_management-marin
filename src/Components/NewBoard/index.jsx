@@ -25,7 +25,7 @@ const NewBoard = ({ data, setSelectedBoard }) => {
         <h1>{data?.name}</h1>
      
         </div>
-      
+        <div className="empty"></div>
     </div>
   );
 };

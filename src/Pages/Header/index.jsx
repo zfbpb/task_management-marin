@@ -40,6 +40,8 @@ const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards }) => {
     "Marketing Plan": "/marketing-plan",
     Roadmap: "/roadmap",
   };
+
+  console.log(boardNamesLinks)
   return (
     <header className={`header ${theme} ${hideHeader ? "" : "hidden"}`}>
       <div className="header__content">
