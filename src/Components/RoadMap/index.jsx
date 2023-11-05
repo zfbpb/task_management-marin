@@ -9,7 +9,7 @@ const RoadMap = () => {
       <div className="title">
         <h1>{data.boards?.[2].name}</h1>
       </div>
-      
+      <div className="empty"></div>
     </div>
   );
 };

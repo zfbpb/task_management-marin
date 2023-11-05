@@ -57,7 +57,14 @@
 .card-placeholder {
   min-height: 100%; // to ensure card can be back to column no matter is empty 
 }
-
+//empty div - without cards
+.empty{
+  margin: 10px;
+  border: 1px dashed red;
+  border-radius: 10px;
+  width: 40%;
+  height: 90%;
+}  
 @media screen and (max-width: 800px) {
   .title{
     justify-content: center;

@@ -8,7 +8,7 @@ const MarketingPlan = () => {
       <div className="title">
         <h1>{data.boards?.[1].name}</h1>
       </div>
-      
+      <div className="empty"></div>
     </div>
   );
 };
