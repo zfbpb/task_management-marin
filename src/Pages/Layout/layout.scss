@@ -84,6 +84,9 @@
     cursor: pointer;
 }
 .editContainer{
+  opacity: 0;
+  visibility: hidden;
+
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -98,6 +101,10 @@
   border: 1px solid blue;
   padding: 10px;
 //  margin: 10px;
+&.visible {
+  opacity: 1;
+  visibility: visible;
+}
 }
 .editButton{
   margin-top: 2px;
