@@ -13,14 +13,14 @@ const Layout = () => {
 
   const [hideHeader, setHideHeader] = useState(true);
   const [showButton, setShowButton] = useState(false);
-  const [createBoard, setCreateBoard] = useState(false);
-  const [boards, setBoards] = useState([]); // for keeping tack of the boards
+  const [createBoard, setCreateBoard] = useState(false); // state for showing or hiding CreateBoard component
+  const [boards, setBoards] = useState([]); // for keeping track a list of boards
   const [selectedBoard, setSelectedBoard] = useState(null); // this line to hold the selected board
   const [boardName, setBoardName] = useState(""); // this state to hold new name for board
-  
+
   const [isVisible, setIsVisible] = useState(false); // state for visibility of dropdown menu
-  const [editContainerVisible, setEditContainerVisible] = useState(true);
-  
+  const [editContainerVisible, setEditContainerVisible] = useState(false); // state for visibility edit menu
+
   const showHeaderIcon = <img src={showIcon} alt="eye icon" />;
   const navigate = useNavigate();
 
@@ -30,7 +30,9 @@ const Layout = () => {
   };
   // for new boards
   const handleCreateBoard = (boardData) => {
-    setBoards((prevBoards) => [...prevBoards, boardData]);
+    const updatedBoards = [...boards, boardData];
+    setBoards(updatedBoards);
+    localStorage.setItem("boards", JSON.stringify(updatedBoards));
   };
 
   // Load boards from Local Storage
@@ -40,9 +42,9 @@ const Layout = () => {
   }, []);
 
   const deleteBoard = (boardName) => {
-    const updatedBoards = boards.filter((board) => board.name !== boardName);
-    setBoards(updatedBoards);
-    localStorage.setItem("boards", JSON.stringify(updatedBoards));
+    const updatedBoards = boards.filter((board) => board.name !== boardName); // a new array of boards exluding the board to be deleted
+    setBoards(updatedBoards); // update state with the new array of boards - removing the selected board
+    localStorage.setItem("boards", JSON.stringify(updatedBoards)); // update inside localStorage
   };
 
   //                                                    new
@@ -67,11 +69,10 @@ const Layout = () => {
   useEffect(() => {
     function handleClickOutside(event) {
       if (
-        (dropdownRef.current && 
-          !dropdownRef.current.contains(event.target)) 
-        &&
-        (dropdownEditRef.current &&
-          !dropdownEditRef.current.contains(event.target))
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        dropdownEditRef.current &&
+        !dropdownEditRef.current.contains(event.target)
       ) {
         setIsVisible(false);
         setEditContainerVisible(false);
@@ -87,28 +88,35 @@ const Layout = () => {
     setIsVisible((prev) => !prev);
     setEditContainerVisible((prev) => !prev);
   };
-  /* const handleEditBoard = (name) => {
-    setBoards(name.target.value);
-  }; */
 
   const handleEditBoard = () => {
     if (selectedBoard && boardName) {
-      // Update the name of the selected board
       const updatedBoards = boards.map((board) => {
+        // Create a new array called updatedBoards by mapping through the existing 'boards' array
         if (board.name === selectedBoard.name) {
-          return { ...board, name: boardName };
+          // Check if the name of the current 'board' matches the name of the 'selectedBoard'
+          return { ...board, name: boardName, route: boardName }; // If the names match, create a new object that is a copy of the 'board' with the 'name' property updated to the new 'boardName'
         } else {
-          return board;
+          return board; // If the names does not match, simply include the current 'board' in the new array without modifications.
         }
       });
 
       setBoards(updatedBoards); // update state with new name
-      setSelectedBoard(null); // relase of selected board
+      setSelectedBoard(null); // clear the selected board
       setEditContainerVisible(false); // hide editContainer
       setBoardName(""); // clear input
+
+      localStorage.setItem("boards", JSON.stringify(updatedBoards)); // to ensure new board name and routed is updated in localStorage
+      const editedBoard = updatedBoards.find( // search through updatedBoards to find an object(board) where name matches the boardName
+        (board) => board.name === boardName
+      );
+      console.log(editedBoard)
+      if (editedBoard) {
+        navigate(`/${editedBoard.route}`); // navigate to route with new name, old properties
+      }
     }
   };
-  //console.log(boards)
+
   return (
     <div
       className={`layoutContainer ${theme} ${createBoard ? "blur" : ""}
@@ -139,7 +147,6 @@ const Layout = () => {
         `}
         ref={dropdownRef}
       >
-        {/* {currentBoard && currentBoard.userCreated && ( */}
         <button onClick={handleDeleteBoard} className="deleteButton">
           Delete Board
         </button>
