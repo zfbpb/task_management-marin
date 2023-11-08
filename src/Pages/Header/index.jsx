@@ -33,14 +33,20 @@ const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards }) => {
     toggleTheme();
     setCheckMode((prev) => !prev);
   };
-
+/* 
   const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
   const boardNamesLinks = {
     "Platform Launch": "/platform-launch",
     "Marketing Plan": "/marketing-plan",
     Roadmap: "/roadmap",
-  };
+  }; */
+  const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
 
+  const boardNamesLinks = boardNames.reduce((acc, board) => {
+    acc[board] = `/${board.replace(/\s+/g, '-').toLowerCase()}`;
+    return acc;
+  }, {});
+  
   //console.log(boardNamesLinks)
   return (
     <header className={`header ${theme} ${hideHeader ? "" : "hidden"}`}>

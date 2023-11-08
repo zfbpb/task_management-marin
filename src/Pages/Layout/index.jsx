@@ -107,10 +107,11 @@ const Layout = () => {
       setBoardName(""); // clear input
 
       localStorage.setItem("boards", JSON.stringify(updatedBoards)); // to ensure new board name and routed is updated in localStorage
-      const editedBoard = updatedBoards.find( // search through updatedBoards to find an object(board) where name matches the boardName
+      const editedBoard = updatedBoards.find(
+        // search through updatedBoards to find an object(board) where name matches the boardName
         (board) => board.name === boardName
       );
-      console.log(editedBoard)
+      
       if (editedBoard) {
         navigate(`/${editedBoard.route}`); // navigate to route with new name, old properties
       }
@@ -127,6 +128,7 @@ const Layout = () => {
         hideHeader={hideHeader}
         setCreateBoard={setCreateBoard}
         boards={boards}
+        //boardNamesLinks={boardNamesLinks} 
       />
       {showButton && (
         <button className="toggleHeader" onClick={toggleHeader}>

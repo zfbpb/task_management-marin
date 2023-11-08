@@ -7,12 +7,21 @@ import "./platform.scss";
 
 const PlatformLaunch = () => {
   const { theme } = useContext(ThemeContext);
-  //const [data, setData] = useState(initialData);
+
+  // Map column colors to CSS classes
+  const columnColors = {
+    Todo: "blue-ball",
+    Doing: "purple-ball",
+    Done: "green-ball",
+  };
+
+  // Track whether each column is empty or not
+  const [isEmptyColumn, setIsEmptyColumn] = useState({});
 
   //checking first is there any stored data before initialData loads
   const [data, setData] = useState(() => {
-    const localStorageData = localStorage.getItem("boardData")
-    return localStorageData ? JSON.parse(localStorageData) : initialData
+    const localStorageData = localStorage.getItem("boardData");
+    return localStorageData ? JSON.parse(localStorageData) : initialData;
   });
   const onDragEnd = (result) => {
     const { source, destination } = result;
@@ -36,16 +45,20 @@ const PlatformLaunch = () => {
         destinationColumn.tasks.splice(destination.index, 0, movedTask);
       }
 
+      // Update the isEmptyColumn state
+      const isEmpty = updatedBoards[0].columns.reduce((acc, column) => {
+        acc[column.id] = column.tasks.length === 0;
+        return acc;
+      }, {});
+
+      setIsEmptyColumn(isEmpty);
+
       return { ...prevData, boards: updatedBoards };
     });
   };
-  useEffect(() =>{
-    localStorage.setItem("boardData", JSON.stringify(data))
-  },[data])
-
-  const columnOneNum = data.boards?.[0].columns[0].tasks?.length;
-  const columnTwoNum = data.boards?.[0].columns[1].tasks?.length;
-  const columnThreeNum = data.boards?.[0].columns[2].tasks?.length;
+  useEffect(() => {
+    localStorage.setItem("boardData", JSON.stringify(data));
+  }, [data]);
 
   return (
     <div className={`platform-container ${theme}`}>
@@ -55,76 +68,42 @@ const PlatformLaunch = () => {
       <div className="platform-wrapper-vertical">
         <div className="platform-wrapper-horizontal">
           <DragDropContext onDragEnd={onDragEnd}>
-            <div className="column-wrapper">
-              <p>
-                <span className="ball blue-ball"></span>
-                {data.boards?.[0].columns[0].name}({columnOneNum})
-              </p>
-              <Droppable droppableId={data.boards[0].columns[0].id.toString()}>
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {data.boards?.[0]?.columns?.[0]?.tasks?.map(
-                      (task, index) => (
-                        <Card
-                          key={task.id}
-                          id={task.id}
-                          text={task.title}
-                          index={index}
-                        />
-                      )
-                    )}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </div>
-            <div className="column-wrapper">
-              <p>
-                <span className="ball purple-ball"></span>
-                {data.boards?.[0].columns[1].name}({columnTwoNum})
-              </p>
+            {data.boards?.[0].columns.map((column, index) => {
 
-              <Droppable droppableId={data.boards[0].columns[1].id.toString()}>
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {data.boards?.[0]?.columns?.[1]?.tasks?.map(
-                      (task, index) => (
-                        <Card
-                          key={task.id}
-                          id={task.id}
-                          text={task.title}
-                          index={index}
-                        />
-                      )
+              const columnNum = column.tasks?.length;
+              const columnColorClass = columnColors[column.name] || "ball";
+
+              
+              return (
+                <div className="column-wrapper" key={column.id}>
+                  <p>
+                    <span className={`ball ${columnColorClass}`}></span>
+                    {column.name}({columnNum})
+                  </p>
+
+                  <Droppable droppableId={column.id.toString()}>
+                    {(provided) => (
+                      <div ref={provided.innerRef} {...provided.droppableProps}>
+                        {data.boards?.[0]?.columns?.[index]?.tasks?.map(
+                          (task, taskIndex) => (
+                            <Card
+                              key={task.id}
+                              id={task.id}
+                              text={task.title}
+                              index={taskIndex}
+                            />
+                          )
+                        )}
+                        {provided.placeholder}
+                        {isEmptyColumn[column.id] && (
+                          <div className="empty">Empty</div>
+                        )}
+                      </div>
                     )}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </div>
-            <div className="column-wrapper">
-              <p>
-                <span className="ball green-ball"></span>
-                {data.boards?.[0].columns[2].name}({columnThreeNum})
-              </p>
-              <Droppable droppableId={data.boards[0].columns[2].id.toString()}>
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {data.boards?.[0]?.columns?.[2]?.tasks?.map(
-                      (task, index) => (
-                        <Card
-                          key={task.id}
-                          id={task.id}
-                          text={task.title}
-                          index={index}
-                        />
-                      )
-                    )}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </div>
+                  </Droppable>
+                </div>
+              );
+            })}
           </DragDropContext>
           <div className="new-column">New Column +</div>
         </div>
@@ -132,4 +111,5 @@ const PlatformLaunch = () => {
     </div>
   );
 };
+
 export default PlatformLaunch;
