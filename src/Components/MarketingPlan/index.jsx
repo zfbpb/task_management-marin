@@ -12,6 +12,7 @@ const MarketingPlan = ({ data, onDragEnd }) => {
       <div className="platform-wrapper-vertical">
         <div className="platform-wrapper-horizontal">
           <BoardContainer data={data} boardIndex={1} onDragEnd={onDragEnd} />
+          <div className="new-column">New Column +</div>
         </div>
       </div>
     </div>
