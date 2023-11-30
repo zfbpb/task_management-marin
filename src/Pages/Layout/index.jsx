@@ -9,12 +9,13 @@ import { IconEllipsis } from "../../Assets/three-dots/IconEllipsis";
 import { useNavigate } from "react-router-dom";
 
 const Layout = () => {
+  const savedBoards = JSON.parse(localStorage.getItem("boards")) || []
   const { theme } = useContext(ThemeContext);
 
   const [hideHeader, setHideHeader] = useState(true);
   const [showButton, setShowButton] = useState(false);
   const [createBoard, setCreateBoard] = useState(false); // state for showing or hiding CreateBoard component
-  const [boards, setBoards] = useState([]); // for keeping track a list of boards
+  const [boards, setBoards] = useState(savedBoards); // for keeping track a list of boards
   const [selectedBoard, setSelectedBoard] = useState(null); // this line to hold the selected board
   const [boardName, setBoardName] = useState(""); // this state to hold new name for board
 
@@ -42,7 +43,7 @@ const Layout = () => {
   }, []);
 
   const deleteBoard = (boardName) => {
-    const updatedBoards = boards.filter((board) => board.name !== boardName); // a new array of boards exluding the board to be deleted
+    const updatedBoards = boards.filter((board) => board.name !== boardName); // a new array of boards including the board to be deleted
     setBoards(updatedBoards); // update state with the new array of boards - removing the selected board
     localStorage.setItem("boards", JSON.stringify(updatedBoards)); // update inside localStorage
   };
