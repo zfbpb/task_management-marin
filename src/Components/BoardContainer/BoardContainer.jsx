@@ -44,22 +44,24 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
               </p>
 
               <Droppable droppableId={column.id.toString()}>
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {data.boards[boardIndex]?.columns?.[
-                      columnIndex
-                    ]?.tasks?.map((task, taskIndex) => (
-                      <Card
-                        key={task.id}
-                        id={task.id}
-                        text={task.title}
-                        index={taskIndex}
-                      />
-                    ))}
-                    {/*  {provided.placeholder}  */}
-                    {isEmptyColumn[column.id] && (
-                      <div className="empty">Empty</div>
-                    )}
+                {(provided, snapshot) => (
+                  <div className="column-wrapper" key={column.id}>
+                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                      {data.boards[boardIndex]?.columns?.[
+                        columnIndex
+                      ]?.tasks?.map((task, taskIndex) => (
+                        <Card
+                          key={task.id}
+                          id={task.id}
+                          text={task.title}
+                          index={taskIndex}
+                        />
+                      ))}
+                      {provided.placeholder}
+                      {isEmptyColumn[column.id] && (
+                        <div className="empty">Empty</div>
+                      )}
+                    </div>
                   </div>
                 )}
               </Droppable>
