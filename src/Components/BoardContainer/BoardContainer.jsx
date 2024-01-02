@@ -24,13 +24,14 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
     const isEmpty = !column.tasks || column.tasks.length === 0;
     setIsEmptyColumn((prev) => ({ ...prev, [column.id]: isEmpty }));
   };
+
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd}>
         {data.boards[boardIndex]?.columns.map((column, columnIndex) => {
-
           const columnNum = column.tasks?.length;
           const columnColorClass = columnColors[column.name] || "ball";
+          const droppableId = column.id?.toString() || columnIndex.toString();
 
           return (
             <div className="column-wrapper" key={column.id}>
@@ -39,16 +40,16 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
                 {column.name}({columnNum})
               </p>
 
-              <Droppable droppableId={column.id.toString()}>
+              <Droppable droppableId={droppableId}>
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
                     {data.boards[boardIndex]?.columns?.[
                       columnIndex
                     ]?.tasks?.map((task, taskIndex) => (
                       <Card
-                        key={task.id}
-                        id={task.id}
-                        text={task.title}
+                        key={task?.id}
+                        id={task?.id}
+                        text={task?.title}
                         index={taskIndex}
                       />
                     ))}
@@ -63,7 +64,6 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
           );
         })}
       </DragDropContext>
-      {/*  <div className="new-column">New Column +</div> */}
     </>
   );
 };
