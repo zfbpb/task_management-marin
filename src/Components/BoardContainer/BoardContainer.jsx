@@ -10,8 +10,6 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
   };
   const [isEmptyColumn, setIsEmptyColumn] = useState({});
 
-  // Run checkEmptyColumn when component mounts or when data.boards or column tasks change
-  // solved problem with re-renders - it should be useEffect with dependencies
   useEffect(() => {
     const checkAllColumns = () => {
       data.boards[boardIndex]?.columns.forEach((column) => {
@@ -30,12 +28,10 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
     <>
       <DragDropContext onDragEnd={onDragEnd}>
         {data.boards[boardIndex]?.columns.map((column, columnIndex) => {
-          //check with ? before map
+
           const columnNum = column.tasks?.length;
           const columnColorClass = columnColors[column.name] || "ball";
 
-          //call for check column - too much renders
-          //checkEmptyColumn(column);
           return (
             <div className="column-wrapper" key={column.id}>
               <p>
