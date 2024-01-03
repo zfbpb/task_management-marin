@@ -84,7 +84,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
       </Routes>
 
       {/* setCreateBoard={setCreateBoard} */}
-      <BoardContainer onDragEnd={onDragEnd}  data={data}/>
+      <BoardContainer onDragEnd={onDragEnd}  data={data} />
     </div>
   );
 };

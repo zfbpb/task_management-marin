@@ -1,18 +1,8 @@
 import React from "react";
-//import initialData from "../../Assets/data/data.json";
 import "./roadmap.scss"
 import BoardContainer from "../BoardContainer/BoardContainer";
-//import { DragDropContext, Droppable } from "@hello-pangea/dnd";
-//import Card from "../../Assets/drag-drop/Card";
 
 const RoadMap = ({data, onDragEnd}) => {
-  //const data = initialData;
-
-/*   const columnColors = {
-    Todo: "blue-ball",
-    Doing: "purple-ball",
-  }; */
-
   return (
     <div className="roadmap-container">
       <div className="title">
