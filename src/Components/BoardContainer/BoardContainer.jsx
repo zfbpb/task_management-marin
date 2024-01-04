@@ -29,7 +29,7 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
     <>
       <DragDropContext onDragEnd={onDragEnd}>
         {data.boards[boardIndex]?.columns.map((column, columnIndex) => {
-          const columnNum = column.tasks?.length;
+          const columnNum = column.tasks.length;
           const columnColorClass = columnColors[column.name] || "ball";
           const droppableId = column.id?.toString() || columnIndex.toString();
 
@@ -43,18 +43,19 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
               <Droppable droppableId={droppableId}>
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {data.boards[boardIndex]?.columns?.[
-                      columnIndex
-                    ]?.tasks?.map((task, taskIndex) => (
-                      <Card
-                        key={task?.id}
-                        id={task?.id}
-                        text={task?.title}
-                        index={taskIndex}
-                      />
-                    ))}
+                    {data.boards[boardIndex].columns[columnIndex].tasks
+                      .filter((task) => task)
+                      .map((task, id) => (
+                        <Card
+                          key={task.id || `fallback-id-${id}`}
+                          id={task.id || `fallback-id-${id}`}
+                          text={task?.title}
+                          index={id}
+                        />
+                      ))}
+
                     {provided.placeholder}
-                    {isEmptyColumn[column.id] && (
+                    {isEmptyColumn[column?.id] && (
                       <div className="empty">Empty</div>
                     )}
                   </div>
