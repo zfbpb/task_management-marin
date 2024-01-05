@@ -9,7 +9,7 @@ import { IconEllipsis } from "../../Assets/three-dots/IconEllipsis";
 import { useNavigate } from "react-router-dom";
 
 const Layout = () => {
-  const savedBoards = JSON.parse(localStorage.getItem("boards")) || []
+  const savedBoards = JSON.parse(localStorage.getItem("boards")) || [];
   const { theme } = useContext(ThemeContext);
 
   const [hideHeader, setHideHeader] = useState(true);
@@ -55,11 +55,14 @@ const Layout = () => {
   };
   //console.log("data", data);
 
-  // Modify handleDeleteBoard:
   const handleDeleteBoard = () => {
-    if (selectedBoard) {
-      deleteBoard(selectedBoard.name);
-      navigate("/");
+    try {
+      if (selectedBoard) {
+        deleteBoard(selectedBoard.name);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error navigating:", error);
     }
   };
 
@@ -112,7 +115,7 @@ const Layout = () => {
         // search through updatedBoards to find an object(board) where name matches the boardName
         (board) => board.name === boardName
       );
-      
+
       if (editedBoard) {
         navigate(`/${editedBoard.route}`); // navigate to route with new name, old properties
       }
@@ -129,7 +132,7 @@ const Layout = () => {
         hideHeader={hideHeader}
         setCreateBoard={setCreateBoard}
         boards={boards}
-        //boardNamesLinks={boardNamesLinks} 
+        //boardNamesLinks={boardNamesLinks}
       />
       {showButton && (
         <button className="toggleHeader" onClick={toggleHeader}>
