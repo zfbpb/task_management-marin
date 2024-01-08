@@ -9,6 +9,9 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
     Todo: "blue-ball",
     Doing: "purple-ball",
     Done: "green-ball",
+    Now: "blue-ball",
+    Next: "purple-ball",
+    Later: "green-ball",
   };
   const [isEmptyColumn, setIsEmptyColumn] = useState({});
 
