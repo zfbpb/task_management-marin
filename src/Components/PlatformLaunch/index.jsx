@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../Theme";
 import BoardContainer from "../BoardContainer/BoardContainer";
-import "./platform.scss";
+
 
 const PlatformLaunch = ({ data, onDragEnd }) => {
   const { theme } = useContext(ThemeContext);

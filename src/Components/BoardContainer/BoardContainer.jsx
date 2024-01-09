@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 import Card from "../../Assets/drag-drop/Card";
+import { ThemeContext } from "../../Theme";
 
 const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
+  const { theme } = useContext(ThemeContext);
   const columnColors = {
     Todo: "blue-ball",
     Doing: "purple-ball",
     Done: "green-ball",
+    Now: "blue-ball",
+    Next: "purple-ball",
+    Later: "green-ball",
   };
   const [isEmptyColumn, setIsEmptyColumn] = useState({});
 
@@ -34,7 +39,7 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
           const droppableId = column.id?.toString() || columnIndex.toString();
 
           return (
-            <div className="column-wrapper" key={column.id}>
+            <div className={`column-wrapper ${theme}`} key={column.id}>
               <p>
                 <span className={`ball ${columnColorClass}`}></span>
                 {column.name}({columnNum})
