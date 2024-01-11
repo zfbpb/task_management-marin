@@ -27,18 +27,18 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     if (!destination) return;
 
     setData((prevData) => {
-      const updatedBoards = [...prevData.boards];
+      const updatedBoards = [...prevData?.boards];
 
       // Identify source and destination columns
-      const sourceColumn = updatedBoards[0].columns?.find(
-        (column) => column.id.toString() === source.droppableId
+      const sourceColumn = updatedBoards[0]?.columns?.find(
+        (column) => column?.id?.toString() === source.droppableId
       );
-      const destinationColumn = updatedBoards[0].columns?.find(
-        (column) => column.id.toString() === destination.droppableId
+      const destinationColumn = updatedBoards[0]?.columns?.find(
+        (column) => column?.id?.toString() === destination.droppableId
       );
 
       if (sourceColumn && destinationColumn) {
-        const [movedTask] = sourceColumn.tasks.splice(source.index, 1);
+        const [movedTask] = sourceColumn.tasks.splice(source?.index, 1);
         destinationColumn.tasks.splice(destination.index, 0, movedTask);
       }
 
@@ -63,10 +63,10 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
         <Route path="/" element={<Navigate to="/platform-launch" />} />
         <Route
           path="/platform-launch"
-          element={<PlatformLaunch onDragEnd={onDragEnd} data={data} />}
+          element={<PlatformLaunch onDragEnd={onDragEnd} data={data.boards[0]} />}
         />
-        <Route path="/marketing-plan" element={<MarketingPlan onDragEnd={onDragEnd} data={data}/> } />
-        <Route path="/roadmap" element={<RoadMap onDragEnd={onDragEnd} data={data}/>} />
+        <Route path="/marketing-plan" element={<MarketingPlan onDragEnd={onDragEnd} data={data.boards[1]}/> } />
+        <Route path="/roadmap" element={<RoadMap onDragEnd={onDragEnd} data={data.boards[2]}/>} />
         {/* <Route path="*" element={<PlatformLaunch />} /> {/* to handle no route matches location warning */}
         {boards.map((board) => (
           <Route

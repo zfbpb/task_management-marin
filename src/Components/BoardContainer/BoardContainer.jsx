@@ -16,6 +16,7 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
   const [isEmptyColumn, setIsEmptyColumn] = useState({});
 
   useEffect(() => {
+   
     const checkAllColumns = () => {
       data.boards[boardIndex]?.columns.forEach((column) => {
         checkEmptyColumn(column);
@@ -23,7 +24,7 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
     };
 
     checkAllColumns();
-  }, [boardIndex, data.boards]);
+  }, [boardIndex, data]);
 
   const checkEmptyColumn = (column) => {
     const isEmpty = !column.tasks || column.tasks.length === 0;
