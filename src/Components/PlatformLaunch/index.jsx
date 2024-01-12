@@ -1,25 +1,26 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../Theme";
-import BoardContainer from "../BoardContainer/BoardContainer";
+import Card from "../../Assets/drag-drop/Card";
+//import BoardContainer from "../BoardContainer/BoardContainer";
 
-const PlatformLaunch = ({ data, onDragEnd }) => {
+const PlatformLaunch = ({ data }) => {
   const { theme } = useContext(ThemeContext);
 
-  // Check if data and boards are present and have the expected structure
-  const boardData = data?.boards?.[0];
-  const boardName = boardData?.name || "";
+  
 
+/* console.log(data.columns[0].name);
+console.log(data.columns[1].name);
+console.log(data.columns[2].name);
+const columnNames = data.columns.map((column) => column.name) */
+console.log(data);
   return (
     <div className={`platform-container ${theme}`}>
       <div className="title">
-        <h1>{boardName}</h1>
+        <h1></h1>
       </div>
       <div className="platform-wrapper-vertical">
-        <div className="platform-wrapper-horizontal">
-          {/* Pass the correct board data to BoardContainer */}
-          <BoardContainer data={boardData} boardIndex={0} onDragEnd={onDragEnd} />
-          <div className="new-column">New Column +</div>
-        </div>
+        
+        <div className="new-column">New Column +</div>
       </div>
     </div>
   );
