@@ -19,7 +19,9 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     return localStorageData ? JSON.parse(localStorageData) : initialData;
   });
   
-  const onDragEnd = (result) => {
+
+  const onDragEnd = (result, boardIndex) => {
+    console.log(boardIndex);
     const { source, destination } = result;
 
 
@@ -27,28 +29,20 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     if (!destination) return;
 
     setData((prevData) => {
-      const updatedBoards = [...prevData.boards];
+      const updatedBoards = [...prevData?.boards];
 
       // Identify source and destination columns
-      const sourceColumn = updatedBoards[0].columns?.find(
-        (column) => column.id.toString() === source.droppableId
+      const sourceColumn = updatedBoards[boardIndex]?.columns?.find(
+        (column) => column?.id?.toString() === source.droppableId
       );
-      const destinationColumn = updatedBoards[0].columns?.find(
-        (column) => column.id.toString() === destination.droppableId
+      const destinationColumn = updatedBoards[boardIndex]?.columns?.find(
+        (column) => column?.id?.toString() === destination.droppableId
       );
 
       if (sourceColumn && destinationColumn) {
-        const [movedTask] = sourceColumn.tasks.splice(source.index, 1);
+        const [movedTask] = sourceColumn.tasks.splice(source?.index, 1);
         destinationColumn.tasks.splice(destination.index, 0, movedTask);
       }
-
-      // Update the isEmptyColumn state
-      /* const isEmpty = updatedBoards[0].columns.reduce((acc, column) => {
-        acc[column.id] = column.tasks.length === 0;
-        return acc;
-      }, {});
-
-      setIsEmptyColumn(isEmpty); */
 
       return { ...prevData, boards: updatedBoards };
     });

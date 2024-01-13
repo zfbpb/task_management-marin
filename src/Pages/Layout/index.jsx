@@ -121,7 +121,7 @@ const Layout = () => {
       }
     }
   };
-
+//  console.log(boards);
   return (
     <div
       className={`layoutContainer ${theme} ${createBoard ? "blur" : ""}
