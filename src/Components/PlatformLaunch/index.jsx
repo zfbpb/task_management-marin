@@ -17,7 +17,7 @@ const PlatformLaunch = ({ data, onDragEnd }) => {
       <div className="platform-wrapper-vertical">
         <div className="platform-wrapper-horizontal">
           {/* Pass the correct board data to BoardContainer */}
-          <BoardContainer data={boardData} boardIndex={0} onDragEnd={onDragEnd} />
+          <BoardContainer data={data} boardIndex={0} onDragEnd={onDragEnd} />
           <div className="new-column">New Column +</div>
         </div>
       </div>

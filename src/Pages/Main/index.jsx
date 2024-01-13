@@ -18,7 +18,9 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     const localStorageData = localStorage.getItem("boardData");
     return localStorageData ? JSON.parse(localStorageData) : initialData;
   });
-  
+  console.log("data", data);
+  console.log("initialData", initialData);
+
   const onDragEnd = (result) => {
     const { source, destination } = result;
 
@@ -42,14 +44,6 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
         destinationColumn.tasks.splice(destination.index, 0, movedTask);
       }
 
-      // Update the isEmptyColumn state
-      /* const isEmpty = updatedBoards[0].columns.reduce((acc, column) => {
-        acc[column.id] = column.tasks.length === 0;
-        return acc;
-      }, {});
-
-      setIsEmptyColumn(isEmpty); */
-
       return { ...prevData, boards: updatedBoards };
     });
   };
@@ -63,10 +57,10 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
         <Route path="/" element={<Navigate to="/platform-launch" />} />
         <Route
           path="/platform-launch"
-          element={<PlatformLaunch onDragEnd={onDragEnd} data={data.boards[0]} />}
+          element={<PlatformLaunch onDragEnd={onDragEnd} data={data} />}
         />
-        <Route path="/marketing-plan" element={<MarketingPlan onDragEnd={onDragEnd} data={data.boards[1]}/> } />
-        <Route path="/roadmap" element={<RoadMap onDragEnd={onDragEnd} data={data.boards[2]}/>} />
+        <Route path="/marketing-plan" element={<MarketingPlan onDragEnd={onDragEnd} data={data}/> } />
+        <Route path="/roadmap" element={<RoadMap onDragEnd={onDragEnd} data={data}/>} />
         {/* <Route path="*" element={<PlatformLaunch />} /> {/* to handle no route matches location warning */}
         {boards.map((board) => (
           <Route
