@@ -22,6 +22,8 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
         checkEmptyColumn(column);
       });
     };
+    
+    //console.log(boardIndex);
 
     checkAllColumns();
   }, [boardIndex, data]);
@@ -33,7 +35,8 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
 
   return (
     <>
-      <DragDropContext onDragEnd={onDragEnd}>
+      <DragDropContext onDragEnd={(result) => onDragEnd(result, boardIndex)}>
+        
         {data.boards[boardIndex]?.columns.map((column, columnIndex) => {
           const columnNum = column.tasks.length;
           const columnColorClass = columnColors[column.name] || "ball";

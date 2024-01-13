@@ -18,10 +18,10 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     const localStorageData = localStorage.getItem("boardData");
     return localStorageData ? JSON.parse(localStorageData) : initialData;
   });
-  console.log("data", data);
-  console.log("initialData", initialData);
+  
 
-  const onDragEnd = (result) => {
+  const onDragEnd = (result, boardIndex) => {
+    console.log(boardIndex);
     const { source, destination } = result;
 
 
@@ -32,10 +32,10 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
       const updatedBoards = [...prevData?.boards];
 
       // Identify source and destination columns
-      const sourceColumn = updatedBoards[0]?.columns?.find(
+      const sourceColumn = updatedBoards[boardIndex]?.columns?.find(
         (column) => column?.id?.toString() === source.droppableId
       );
-      const destinationColumn = updatedBoards[0]?.columns?.find(
+      const destinationColumn = updatedBoards[boardIndex]?.columns?.find(
         (column) => column?.id?.toString() === destination.droppableId
       );
 
