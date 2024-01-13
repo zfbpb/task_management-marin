@@ -5,7 +5,6 @@ import BoardContainer from "../BoardContainer/BoardContainer";
 const PlatformLaunch = ({ data, onDragEnd }) => {
   const { theme } = useContext(ThemeContext);
 
-  // Check if data and boards are present and have the expected structure
   const boardData = data?.boards?.[0];
   const boardName = boardData?.name || "";
 
@@ -14,12 +13,12 @@ const PlatformLaunch = ({ data, onDragEnd }) => {
       <div className="title">
         <h1>{boardName}</h1>
       </div>
-      <div className="platform-wrapper-vertical">
-        <div className="platform-wrapper-horizontal">
-          {/* Pass the correct board data to BoardContainer */}
+      
+        <div className="wrapper-horizontal">
+          
           <BoardContainer data={data} boardIndex={0} onDragEnd={onDragEnd} />
           <div className="new-column">New Column +</div>
-        </div>
+        
       </div>
     </div>
   );

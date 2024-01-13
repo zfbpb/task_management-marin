@@ -21,7 +21,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
   
 
   const onDragEnd = (result, boardIndex) => {
-    console.log(boardIndex);
+    //console.log(boardIndex);
     const { source, destination } = result;
 
 

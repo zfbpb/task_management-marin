@@ -5,7 +5,8 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Plus Jakarta Sans, sans-serif;
-  overflow: hidden;
+  
+  //overflow: hidden;
 }
 
 // h1 tag
@@ -85,8 +86,9 @@
 .platform-container,
 .marketing-container,
 .roadmap-container {
-  width: 100vw;
-  height: 100vh;
+  //overflow: auto;
+  //width: 100vw;
+  //height: 100vh;
   display: flex;
   flex-direction: column;
   color: white;
@@ -119,14 +121,16 @@
 
 }
 
-.platform-wrapper-vertical {
-  flex-grow: 1;
+/* .platform-wrapper-vertical {
   overflow-y: auto;
-  height: 85vh;
-}
+  
+} */
 
-.platform-wrapper-horizontal {
-  overflow-x: auto;
+.wrapper-horizontal {
+  border:1px solid blue;
+  flex-grow: 1;
+  height: 85vh;
+  overflow: auto;
   display: flex;
   gap: 1rem;
   padding: 10px;
@@ -134,17 +138,18 @@
   cursor: move;
 }
 
+
 .column-wrapper {
   width: 100%;
   min-width: 200px;
   gap: 1rem;
 }
 
-@media screen and (max-width:800px) {
-  .platform-wrapper-horizontal {
+/* @media screen and (max-width:800px) {
+  .wrapper-horizontal {
     height: 100vh;
   }
-}
+} */
 
 @media screen and (max-width: 800px) {
   .title {
