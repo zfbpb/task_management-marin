@@ -13,12 +13,9 @@ const PlatformLaunch = ({ data, onDragEnd }) => {
       <div className="title">
         <h1>{boardName}</h1>
       </div>
-      
-        <div className="wrapper-horizontal">
-          
+        <div className="wrapper-horizontal">         
           <BoardContainer data={data} boardIndex={0} onDragEnd={onDragEnd} />
           <div className="new-column">New Column +</div>
-        
       </div>
     </div>
   );

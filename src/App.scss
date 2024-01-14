@@ -127,10 +127,10 @@
 } */
 
 .wrapper-horizontal {
-  border:1px solid blue;
   flex-grow: 1;
   height: 85vh;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: scroll;
   display: flex;
   gap: 1rem;
   padding: 10px;
@@ -153,9 +153,13 @@
 
 @media screen and (max-width: 800px) {
   .title {
-    justify-content: center;
+    //justify-content: center;
     height: 5vh;
     padding: 0;
+
+    h1{
+      margin-left: 20px;
+    }
   }
 
 }
