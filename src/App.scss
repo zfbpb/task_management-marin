@@ -10,6 +10,8 @@
 
 body{
   overflow-y: hidden;
+  overflow-x:hidden;
+ // overflow-x: hidden;
 }
 // h1 tag
 
@@ -88,9 +90,7 @@ body{
 .platform-container,
 .marketing-container,
 .roadmap-container {
-  //overflow: auto;
-  min-width: 100%;
-  //height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
 
@@ -122,22 +122,16 @@ body{
 
 }
 
-/* .platform-wrapper-vertical {
-  overflow-y: auto;
-  
-} */
 
 .wrapper-horizontal {
   flex-grow: 1;
   
   height: 85vh;
-  overflow-x: auto;
-  overflow-y:auto ;
-  //overflow: auto;
+  overflow: auto;
+
   display: flex;
   gap: 1rem;
   padding: 10px;
-  //min-height: 100vh;
   cursor: move;
 }
 
@@ -147,12 +141,6 @@ body{
   min-width: 200px;
   gap: 1rem;
 }
-
-/* @media screen and (max-width:800px) {
-  .wrapper-horizontal {
-    height: 100vh;
-  }
-} */
 
 @media screen and (max-width: 800px) {
   .title {
