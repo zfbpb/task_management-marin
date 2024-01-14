@@ -6,9 +6,11 @@
   box-sizing: border-box;
   font-family: Plus Jakarta Sans, sans-serif;
   
-  //overflow: hidden;
 }
 
+body{
+  overflow-y: hidden;
+}
 // h1 tag
 
 .title {
@@ -87,11 +89,10 @@
 .marketing-container,
 .roadmap-container {
   //overflow: auto;
-  //width: 100vw;
+  min-width: 100%;
   //height: 100vh;
   display: flex;
   flex-direction: column;
-  color: white;
 
   .board-name {
     display: flex;
@@ -128,13 +129,15 @@
 
 .wrapper-horizontal {
   flex-grow: 1;
+  
   height: 85vh;
   overflow-x: auto;
-  overflow-y: scroll;
+  overflow-y:auto ;
+  //overflow: auto;
   display: flex;
   gap: 1rem;
   padding: 10px;
-  min-height: 88vh;
+  //min-height: 100vh;
   cursor: move;
 }
 
