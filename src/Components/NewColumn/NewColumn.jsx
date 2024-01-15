@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./NewColumn.scss";
 
-const NewColumn = () => {
+const NewColumn = ({ addNewColumn }) => {
   const [createColumn, setCreateColumn] = useState(true);
   const [description, setDescription] = useState("");
 
@@ -13,12 +13,12 @@ const NewColumn = () => {
     setDescription(e.target.value);
   };
 
-  const sendDescription = () => {
-    
-    console.log(description);
-
-
-    setDescription("");
+  const submitDescription = () => {
+    if (description.trim() !== "") {
+      addNewColumn(description);
+      setDescription("");
+      toggleCreateColumn();
+    }
   };
 
   return (
@@ -28,9 +28,12 @@ const NewColumn = () => {
       </div>
       {createColumn && (
         <div className="create-column">
-          <button className="closeColumnBtn" onClick={toggleCreateColumn}>
-            X
-          </button>
+          <div className="column-name-wrapper">
+            <p>New Column</p>
+            <button className="closeColumnBtn" onClick={toggleCreateColumn}>
+              X
+            </button>
+          </div>
           <textarea
             name="description"
             id="description"
@@ -42,7 +45,7 @@ const NewColumn = () => {
           <button
             type="submit"
             className="submitColumnBtn"
-            onClick={sendDescription}
+            onClick={submitDescription}
           >
             submit
           </button>

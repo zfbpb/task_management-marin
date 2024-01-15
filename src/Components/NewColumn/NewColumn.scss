@@ -16,7 +16,12 @@
     background: linear-gradient(to bottom, rgba(121, 132, 147, 0.2), rgba(130, 143, 163, 0.1), rgba(130, 143, 163, 0));
     background-color: $background2;
 }
-
+.column-name-wrapper{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
 .create-column {
     cursor:default;
     border:1px solid red;
@@ -36,9 +41,11 @@
         min-width: 100%;
     }
     .closeColumnBtn{
-        cursor: pointer;
+        height: 25px;
         margin-left: auto;
         margin-right: 0;
+        cursor: pointer;
+        
     }
     .submitColumnBtn{
         cursor: pointer;
