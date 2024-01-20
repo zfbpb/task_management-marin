@@ -50,11 +50,19 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     localStorage.setItem("boardData", JSON.stringify(data));
   }, [data]);
 
-  //from PlatformLaunch first check
-  const updateDataInMain = (updatedData) => {
-    setData(updatedData);
-    //console.log(updatedData); //boards Todo,Doing,Done
+  //Split function usage based on boardIndex - undefined columns fix
+  const updateDataInMain = (updatedData, boardIndex) => {
+    setData((prevData) => {
+      const updatedBoards = [...prevData?.boards];
+
+      if (boardIndex >= 0 && boardIndex < updatedBoards.length) {
+        updatedBoards[boardIndex] = updatedData;
+      }
+
+      return { ...prevData, boards: updatedBoards };
+    });
   };
+
   return (
     <div className={`mainContainer ${theme} `}>
       <Routes>
@@ -71,7 +79,13 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
         />
         <Route
           path="/marketing-plan"
-          element={<MarketingPlan onDragEnd={onDragEnd} data={data} />}
+          element={
+            <MarketingPlan
+              onDragEnd={onDragEnd}
+              data={data}
+              updateDataInMain={updateDataInMain}
+            />
+          }
         />
         <Route
           path="/roadmap"

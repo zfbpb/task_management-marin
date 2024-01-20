@@ -44,9 +44,7 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
       });
 
       setColumns(updatedColumns);
-      updateDataInMain({ boards: [{ columns: updatedColumns }] });
-      //updateDataInMain({ ...data, boards: updatedColumns });
-      //console.log("updated", updatedColumns[0].tasks);
+      updateDataInMain({ columns: updatedColumns }, 0);
     }
   };
 
