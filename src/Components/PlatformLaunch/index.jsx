@@ -3,27 +3,35 @@ import { ThemeContext } from "../../Theme";
 import BoardContainer from "../BoardContainer/BoardContainer";
 import NewColumn from "../NewColumn/NewColumn";
 
-const PlatformLaunch = ({ data, onDragEnd }) => {
+const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
   const { theme } = useContext(ThemeContext);
   const [columns, setColumns] = useState(data.boards[0].columns);
 
   const boardData = data?.boards?.[0];
   const boardName = boardData?.name || "";
 
-  console.log(data.boards[0].columns[0].tasks);
-  const columnCount = data.boards[0].columns[0].tasks;
-  const addNewColumn = (description, newId) => {
-    let todoColumn = columns.find((column) => column.name === "Todo");
+  const allID = [];
+  data.boards.forEach((board) => {
+    board.columns.forEach((column) => {
+      column.tasks.forEach((task) => {
+        allID.push(task.id);
+      });
+    });
+  });
 
+  //console.log("allID", allID);
+
+  const addNewColumn = (description) => {
+    let todoColumn = columns.find((column) => column.name === "Todo");
     if (todoColumn) {
       const newTask = {
-        id: generateNewID(newId),
+        id: allID.length,
         title: description,
         description: "",
-        statusId: "",
+        statusId: 0,
         status: "Todo",
       };
-
+      console.log(newTask.id);
       // Clone and update the "Todo" column with the new task
       const updatedColumns = columns.map((column) => {
         if (column.name === "Todo") {
@@ -34,18 +42,12 @@ const PlatformLaunch = ({ data, onDragEnd }) => {
         }
         return column;
       });
-      
-      setColumns(updatedColumns);
-    }
-  };
 
-  const generateNewID = () => {
-    let newId = 0;
-    for (let i = 0; i < columnCount.length; i++) {
-      newId++;
+      setColumns(updatedColumns);
+      updateDataInMain({ boards: [{ columns: updatedColumns }] });
+      //updateDataInMain({ ...data, boards: updatedColumns });
+      //console.log("updated", updatedColumns[0].tasks);
     }
-    console.log(newId);
-    return newId;
   };
 
   return (
