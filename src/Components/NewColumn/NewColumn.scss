@@ -1,0 +1,53 @@
+@import "../../Assets/colors/colors.scss";
+
+.new-column {
+    cursor: pointer;
+    min-width: 200px;
+    max-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    width: 100%;
+    //margin-right: 1px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #828fa3;
+    background: linear-gradient(to bottom, rgba(121, 132, 147, 0.2), rgba(130, 143, 163, 0.1), rgba(130, 143, 163, 0));
+    background-color: $background2;
+}
+.column-name-wrapper{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+.create-column {
+    cursor:default;
+    border:1px solid red;
+    position: absolute;
+    right: 50%;
+    top: 40%;
+    transform: translate(50%, -50%);
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+
+    #description{
+        max-width: 100%;
+        min-width: 100%;
+    }
+    .closeColumnBtn{
+        height: 25px;
+        margin-left: auto;
+        margin-right: 0;
+        cursor: pointer;
+        
+    }
+    .submitColumnBtn{
+        cursor: pointer;
+    }
+}

@@ -18,12 +18,11 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     const localStorageData = localStorage.getItem("boardData");
     return localStorageData ? JSON.parse(localStorageData) : initialData;
   });
-  
 
+  //console.log("initial",data);
   const onDragEnd = (result, boardIndex) => {
-    console.log(boardIndex);
+    //console.log(boardIndex);
     const { source, destination } = result;
-
 
     // Ignore if the item is dropped outside a column or if there's no destination
     if (!destination) return;
@@ -51,16 +50,33 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     localStorage.setItem("boardData", JSON.stringify(data));
   }, [data]);
 
+  //from PlatformLaunch first check
+  const updateDataInMain = (updatedData) => {
+    setData(updatedData);
+    //console.log(updatedData); //boards Todo,Doing,Done
+  };
   return (
     <div className={`mainContainer ${theme} `}>
       <Routes>
         <Route path="/" element={<Navigate to="/platform-launch" />} />
         <Route
           path="/platform-launch"
-          element={<PlatformLaunch onDragEnd={onDragEnd} data={data} />}
+          element={
+            <PlatformLaunch
+              onDragEnd={onDragEnd}
+              data={data}
+              updateDataInMain={updateDataInMain}
+            />
+          }
         />
-        <Route path="/marketing-plan" element={<MarketingPlan onDragEnd={onDragEnd} data={data}/> } />
-        <Route path="/roadmap" element={<RoadMap onDragEnd={onDragEnd} data={data}/>} />
+        <Route
+          path="/marketing-plan"
+          element={<MarketingPlan onDragEnd={onDragEnd} data={data} />}
+        />
+        <Route
+          path="/roadmap"
+          element={<RoadMap onDragEnd={onDragEnd} data={data} />}
+        />
         {/* <Route path="*" element={<PlatformLaunch />} /> {/* to handle no route matches location warning */}
         {boards.map((board) => (
           <Route
@@ -78,7 +94,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
       </Routes>
 
       {/* setCreateBoard={setCreateBoard} */}
-      <BoardContainer onDragEnd={onDragEnd}  data={data} />
+      <BoardContainer onDragEnd={onDragEnd} data={data} />
     </div>
   );
 };
