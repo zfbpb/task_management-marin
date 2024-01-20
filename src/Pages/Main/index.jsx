@@ -54,14 +54,14 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
   const updateDataInMain = (updatedData, boardIndex) => {
     setData((prevData) => {
       const updatedBoards = [...prevData?.boards];
-
-      if (boardIndex >= 0 && boardIndex < updatedBoards.length) {
-        updatedBoards[boardIndex] = updatedData;
-      }
-
+      updatedBoards[boardIndex] = {
+        ...updatedBoards[boardIndex],
+        ...updatedData,
+      };
       return { ...prevData, boards: updatedBoards };
     });
   };
+  
 
   return (
     <div className={`mainContainer ${theme} `}>
@@ -89,7 +89,13 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
         />
         <Route
           path="/roadmap"
-          element={<RoadMap onDragEnd={onDragEnd} data={data} />}
+          element={
+            <RoadMap
+              onDragEnd={onDragEnd}
+              data={data}
+              updateDataInMain={updateDataInMain}
+            />
+          }
         />
         {/* <Route path="*" element={<PlatformLaunch />} /> {/* to handle no route matches location warning */}
         {boards.map((board) => (

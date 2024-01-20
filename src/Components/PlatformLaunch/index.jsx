@@ -8,7 +8,7 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
   const [columns, setColumns] = useState(data.boards[0].columns);
 
   const boardData = data?.boards?.[0];
-  const boardName = boardData?.name || "";
+  const boardName = boardData?.name;
 
   const allID = [];
   data.boards.forEach((board) => {

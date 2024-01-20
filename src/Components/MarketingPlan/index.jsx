@@ -10,7 +10,7 @@ const MarketingPlan = ({ data, onDragEnd, updateDataInMain }) => {
   //console.log(data.boards[1]);
 
   const boardData = data?.boards?.[1];
-  const boardName = boardData?.name || "";
+  const boardName = boardData?.name;
 
   const allID = [];
   data.boards.forEach((board) => {
