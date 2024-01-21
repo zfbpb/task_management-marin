@@ -105,6 +105,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
             element={
               <NewBoard
                 data={board}
+                onDragEnd={onDragEnd}
                 deleteBoard={deleteBoard}
                 setSelectedBoard={setSelectedBoard}
               />

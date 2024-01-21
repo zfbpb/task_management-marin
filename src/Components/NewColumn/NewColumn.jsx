@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./NewColumn.scss";
 
 const NewColumn = ({ addNewColumn }) => {
-  const [createColumn, setCreateColumn] = useState(true);
+  const [createColumn, setCreateColumn] = useState(false);
   const [description, setDescription] = useState("");
 
   const toggleCreateColumn = () => {
@@ -24,7 +24,7 @@ const NewColumn = ({ addNewColumn }) => {
   return (
     <div className="new-column-container">
       <div className="new-column" onClick={toggleCreateColumn}>
-        New Column +
+        New Task +
       </div>
       {createColumn && (
         <div className="create-column">
