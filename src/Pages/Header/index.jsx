@@ -47,7 +47,7 @@ const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards }) => {
     return acc;
   }, {});
   
-  //console.log(boardNamesLinks)
+
   return (
     <header className={`header ${theme} ${hideHeader ? "" : "hidden"}`}>
       <div className="header__content">

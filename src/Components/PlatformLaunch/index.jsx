@@ -19,7 +19,7 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
     });
   });
 
-  //console.log("allID", allID);
+  
 
   const addNewColumn = (description) => {
     let todoColumn = columns.find((column) => column.name === "Todo");
@@ -31,7 +31,6 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
         statusId: 0,
         status: "Todo",
       };
-      console.log(newTask.id);
       // Clone and update the "Todo" column with the new task
       const updatedColumns = columns.map((column) => {
         if (column.name === "Todo") {
@@ -48,7 +47,6 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
     }
   };
 
-  console.log(data);
   return (
     <div className={`platform-container ${theme}`}>
       <div className="title">

@@ -19,9 +19,8 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     return localStorageData ? JSON.parse(localStorageData) : initialData;
   });
 
-  //console.log("initial",data);
+ 
   const onDragEnd = (result, boardIndex) => {
-    //console.log(boardIndex);
     const { source, destination } = result;
 
     // Ignore if the item is dropped outside a column or if there's no destination
@@ -116,7 +115,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
       </Routes>
 
       {/* setCreateBoard={setCreateBoard} */}
-      <BoardContainer onDragEnd={onDragEnd} data={data} />
+      <BoardContainer onDragEnd={onDragEnd} data={data}/>
     </div>
   );
 };

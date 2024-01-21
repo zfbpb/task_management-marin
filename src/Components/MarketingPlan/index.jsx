@@ -7,8 +7,6 @@ const MarketingPlan = ({ data, onDragEnd, updateDataInMain }) => {
   const { theme } = useContext(ThemeContext);
   const [columns, setColumns] = useState(data.boards[1].columns);
 
-  //console.log(data.boards[1]);
-
   const boardData = data?.boards?.[1];
   const boardName = boardData?.name;
 

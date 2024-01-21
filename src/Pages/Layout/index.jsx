@@ -53,7 +53,6 @@ const Layout = () => {
   const toggleMenu = () => {
     setIsVisible((prev) => !prev);
   };
-  //console.log("data", data);
 
   const handleDeleteBoard = () => {
     try {
@@ -121,7 +120,6 @@ const Layout = () => {
       }
     }
   };
-  //  console.log(boards);
   return (
     <div
       className={`layoutContainer ${theme} ${createBoard ? "blur" : ""}
