@@ -98,13 +98,14 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
           }
         />
         {/* <Route path="*" element={<PlatformLaunch />} /> {/* to handle no route matches location warning */}
-        {boards.map((board) => (
+        {boards.map((board, boardIndex) => (
           <Route
             key={board.route}
             path={`/${board.route}`} // path={`/boards/:boardRoute`}
             element={
               <NewBoard
                 data={board}
+                boardIndex={boardIndex}
                 onDragEnd={onDragEnd}
                 deleteBoard={deleteBoard}
                 setSelectedBoard={setSelectedBoard}

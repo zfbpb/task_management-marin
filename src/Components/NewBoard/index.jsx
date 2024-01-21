@@ -1,13 +1,25 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./newboard.scss";
 
 import { ThemeContext } from "../../Theme";
 import NewColumn from "../NewColumn/NewColumn";
 import BoardContainer from "../BoardContainer/BoardContainer";
 
-const NewBoard = ({ data, setSelectedBoard, onDragEnd }) => {
+const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
   const { theme } = useContext(ThemeContext);
-
+  const columnConfig = [
+    {
+      id: 1,
+      name: "Column 1",
+      tasks: [],
+    },
+   /*  {
+      id:2,
+      name: "Column 2",
+      tasks: [],
+    } */
+  ];
+  const [columns, setColumn] = useState(columnConfig || []);
   useEffect(() => {
     setSelectedBoard(data); // Setting selected board
 
@@ -16,25 +28,24 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd }) => {
       setSelectedBoard(null);
     };
   }, [data, setSelectedBoard]);
+  //console.log(data); --> route,name
 
+  //const columnConfig = [0:{name:"Now", id:0, tasks: Array(2)}, 1:{}]
+  // columns[0].tasks[{id:20, title: "blbalafas", description:"", status:"Now"}, {}]
+ //console.log(boardIndex);
   return (
     <div className={`newboard-container ${theme}`}>
       <div className="title">
         <h1>{data?.name}</h1>
       </div>
       <div className="wrapper-horizontal">
-        {data?.columns ? (
-        <BoardContainer
-          data={data}
-          boardIndex={4}
-          onDragEnd={onDragEnd}
-        />
+        <BoardContainer data={{ boards: [{ columns }] }} boardIndex={boardIndex} onDragEnd={onDragEnd} /> 
+        {/* {data?.columns ? (
         ) : (
-          <p>Loading .... </p>
-        )}
+          <p>Create Columns </p>
+        )} */}
         <NewColumn />
       </div>
-
     </div>
   );
 };

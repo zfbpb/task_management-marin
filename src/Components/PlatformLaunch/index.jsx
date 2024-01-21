@@ -48,6 +48,7 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
     }
   };
 
+  console.log(data);
   return (
     <div className={`platform-container ${theme}`}>
       <div className="title">
