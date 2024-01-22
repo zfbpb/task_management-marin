@@ -29,7 +29,7 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
     const existingBoards = JSON.parse(localStorage.getItem("boards") || "[]");
     existingBoards.push(boardData);
 
-    //console.log("boardData", boardData)
+    console.log("boardData", boardData)
 
     localStorage.setItem("boards", JSON.stringify(existingBoards));
 

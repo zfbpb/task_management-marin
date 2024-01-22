@@ -19,9 +19,8 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     return localStorageData ? JSON.parse(localStorageData) : initialData;
   });
 
-  //console.log("initial",data);
+ 
   const onDragEnd = (result, boardIndex) => {
-    //console.log(boardIndex);
     const { source, destination } = result;
 
     // Ignore if the item is dropped outside a column or if there's no destination
@@ -50,11 +49,19 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     localStorage.setItem("boardData", JSON.stringify(data));
   }, [data]);
 
-  //from PlatformLaunch first check
-  const updateDataInMain = (updatedData) => {
-    setData(updatedData);
-    //console.log(updatedData); //boards Todo,Doing,Done
+  //Split function usage based on boardIndex - undefined columns fix
+  const updateDataInMain = (updatedData, boardIndex) => {
+    setData((prevData) => {
+      const updatedBoards = [...prevData?.boards];
+      updatedBoards[boardIndex] = {
+        ...updatedBoards[boardIndex],
+        ...updatedData,
+      };
+      return { ...prevData, boards: updatedBoards };
+    });
   };
+  
+
   return (
     <div className={`mainContainer ${theme} `}>
       <Routes>
@@ -71,20 +78,34 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
         />
         <Route
           path="/marketing-plan"
-          element={<MarketingPlan onDragEnd={onDragEnd} data={data} />}
+          element={
+            <MarketingPlan
+              onDragEnd={onDragEnd}
+              data={data}
+              updateDataInMain={updateDataInMain}
+            />
+          }
         />
         <Route
           path="/roadmap"
-          element={<RoadMap onDragEnd={onDragEnd} data={data} />}
+          element={
+            <RoadMap
+              onDragEnd={onDragEnd}
+              data={data}
+              updateDataInMain={updateDataInMain}
+            />
+          }
         />
         {/* <Route path="*" element={<PlatformLaunch />} /> {/* to handle no route matches location warning */}
-        {boards.map((board) => (
+        {boards.map((board, boardIndex) => (
           <Route
             key={board.route}
             path={`/${board.route}`} // path={`/boards/:boardRoute`}
             element={
               <NewBoard
                 data={board}
+                boardIndex={boardIndex}
+                onDragEnd={onDragEnd}
                 deleteBoard={deleteBoard}
                 setSelectedBoard={setSelectedBoard}
               />
@@ -94,7 +115,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
       </Routes>
 
       {/* setCreateBoard={setCreateBoard} */}
-      <BoardContainer onDragEnd={onDragEnd} data={data} />
+      <BoardContainer onDragEnd={onDragEnd} data={data}/>
     </div>
   );
 };

@@ -22,8 +22,6 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
         checkEmptyColumn(column);
       });
     };
-    
-    //console.log(boardIndex);
 
     checkAllColumns();
   }, [boardIndex, data]);

@@ -8,7 +8,7 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
   const [columns, setColumns] = useState(data.boards[0].columns);
 
   const boardData = data?.boards?.[0];
-  const boardName = boardData?.name || "";
+  const boardName = boardData?.name;
 
   const allID = [];
   data.boards.forEach((board) => {
@@ -19,7 +19,7 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
     });
   });
 
-  //console.log("allID", allID);
+  
 
   const addNewColumn = (description) => {
     let todoColumn = columns.find((column) => column.name === "Todo");
@@ -31,7 +31,6 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
         statusId: 0,
         status: "Todo",
       };
-      console.log(newTask.id);
       // Clone and update the "Todo" column with the new task
       const updatedColumns = columns.map((column) => {
         if (column.name === "Todo") {
@@ -44,9 +43,7 @@ const PlatformLaunch = ({ data, onDragEnd, updateDataInMain }) => {
       });
 
       setColumns(updatedColumns);
-      updateDataInMain({ boards: [{ columns: updatedColumns }] });
-      //updateDataInMain({ ...data, boards: updatedColumns });
-      //console.log("updated", updatedColumns[0].tasks);
+      updateDataInMain({ columns: updatedColumns }, 0);
     }
   };
 

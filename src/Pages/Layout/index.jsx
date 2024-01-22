@@ -53,7 +53,6 @@ const Layout = () => {
   const toggleMenu = () => {
     setIsVisible((prev) => !prev);
   };
-  //console.log("data", data);
 
   const handleDeleteBoard = () => {
     try {
@@ -121,7 +120,6 @@ const Layout = () => {
       }
     }
   };
-//  console.log(boards);
   return (
     <div
       className={`layoutContainer ${theme} ${createBoard ? "blur" : ""}
@@ -164,6 +162,7 @@ const Layout = () => {
         className={`editContainer ${editContainerVisible ? "visible" : ""}`}
         ref={dropdownEditRef}
       >
+        <p>Edit Board name:</p>
         <input
           type="text"
           onChange={(e) => setBoardName(e.target.value)}
