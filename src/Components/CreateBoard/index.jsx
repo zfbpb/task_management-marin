@@ -24,12 +24,12 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
     }
 
     const route = name.toLowerCase().replace(/ /g, "-");
-    const boardData = { route, name };
+    let boardIndex = 3;
+   
+    const boardData = { route, name, boardIndex };
 
     const existingBoards = JSON.parse(localStorage.getItem("boards") || "[]");
     existingBoards.push(boardData);
-
-    console.log("boardData", boardData)
 
     localStorage.setItem("boards", JSON.stringify(existingBoards));
 
@@ -37,7 +37,7 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
     navigate(`/${route}`);
     handleClose();
   };
-
+//console.log(boardData);
   return (
     <div className="create-boardContainer">
       <p className="board-title">Add New Board</p>

@@ -9,17 +9,33 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
   const { theme } = useContext(ThemeContext);
   const columnConfig = [
     {
-      id: 1,
+      id: 211221211,
       name: "Todo",
-      tasks: [],
+      tasks: [
+        {
+          id: 0,
+          title: "Build UI for onboarding flow",
+          description: "",
+          status: "Todo",
+          statusId: 0,
+        },
+      ],
     },
-    /*  {
-      id:2,
-      name: "Column 2",
-      tasks: [],
-    } */
+    {
+      id: 11111111112,
+      name: "Doing",
+      tasks: [
+        {
+          id: 0,
+          title: "Build UI for onboarding flow222",
+          description: "",
+          status: "Todo",
+          statusId: 0,
+        },
+      ],
+    },
   ];
-  const [columns, setColumn] = useState(columnConfig || []);
+  const [columns, setColumn] = useState(columnConfig);
 
   useEffect(() => {
     setSelectedBoard(data); // Setting selected board
@@ -30,11 +46,6 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
     };
   }, [data, setSelectedBoard]);
   //console.log(data); --> route,name
-
-  //const columnConfig = [0:{name:"Now", id:0, tasks: Array(2)}, 1:{}]
-  // columns[0].tasks[{id:20, title: "blbalafas", description:"", status:"Now"}, {}]
-
-  //columnColors[columnConfig.name] || "ball";
 
   return (
     <div className={`newboard-container ${theme}`}>
@@ -47,10 +58,6 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
           boardIndex={boardIndex}
           onDragEnd={onDragEnd}
         />
-        {/* {data?.columns ? (
-        ) : (
-          <p>Create Columns </p>
-        )} */}
         <NewColumn />
       </div>
     </div>
