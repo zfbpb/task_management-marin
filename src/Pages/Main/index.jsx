@@ -19,7 +19,6 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
     return localStorageData ? JSON.parse(localStorageData) : initialData;
   });
 
- 
   const onDragEnd = (result, boardIndex) => {
     const { source, destination } = result;
 
@@ -60,7 +59,6 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
       return { ...prevData, boards: updatedBoards };
     });
   };
-  
 
   return (
     <div className={`mainContainer ${theme} `}>
@@ -96,7 +94,6 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
             />
           }
         />
-        {/* <Route path="*" element={<PlatformLaunch />} /> {/* to handle no route matches location warning */}
         {boards.map((board, boardIndex) => (
           <Route
             key={board.route}
@@ -113,9 +110,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
           />
         ))}
       </Routes>
-
-      {/* setCreateBoard={setCreateBoard} */}
-      <BoardContainer onDragEnd={onDragEnd} data={data}/>
+      <BoardContainer onDragEnd={onDragEnd} data={data} />
     </div>
   );
 };
