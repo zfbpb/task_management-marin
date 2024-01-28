@@ -66,6 +66,9 @@ body{
 //empty div - without cards
 .empty {
   margin: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
   border: 1px dashed red;
   border-radius: 10px;
   width: 30%;
