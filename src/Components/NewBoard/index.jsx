@@ -4,6 +4,7 @@ import "./newboard.scss";
 import { ThemeContext } from "../../Theme";
 import NewColumn from "../NewColumn/NewColumn";
 import BoardContainer from "../BoardContainer/BoardContainer";
+import { columnColors } from "../../Assets/columnColors/columnColors";
 
 const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
   const { theme } = useContext(ThemeContext);
@@ -20,6 +21,7 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
           statusId: 0,
         },
       ],
+      color: columnColors["Todo"],
     },
     {
       id: 11111111112,
@@ -33,6 +35,7 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
           statusId: 0,
         },
       ],
+      color: "blue-ball",
     },
   ];
   const [columns, setColumn] = useState(columnConfig);
@@ -46,7 +49,16 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
     };
   }, [data, setSelectedBoard]);
   //console.log(data); --> route,name
+  /*   const addNewColumn = (columnName, columnColors) => {
+    const newColumn = {
+      id: Date.now(),
+      name: columnName,
+      color: columnColors,
+      tasks: [],
+    };
 
+    setColumn((prevColumn) => [...prevColumn, newColumn]);
+  }; */
   return (
     <div className={`newboard-container ${theme}`}>
       <div className="title">
@@ -57,8 +69,10 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
           data={{ boards: [{ columns }] }}
           boardIndex={boardIndex}
           onDragEnd={onDragEnd}
+          columnConfig={columnConfig}
         />
         <NewColumn />
+        {/* addNewColumn={addNewColumn}  */}
       </div>
     </div>
   );
