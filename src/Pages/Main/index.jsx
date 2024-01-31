@@ -99,8 +99,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
             key={board.route}
             path={`/${board.route}`} // path={`/boards/:boardRoute`}
             element={
-              <NewBoard
-                
+              <NewBoard  
                 data={board}
                 boardIndex={boardIndex}
                 onDragEnd={onDragEnd}

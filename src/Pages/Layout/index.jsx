@@ -120,12 +120,14 @@ const Layout = () => {
       }
     }
   };
+  const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
   return (
     <div
       className={`layoutContainer ${theme} ${createBoard ? "blur" : ""}
       `}
     >
       <Header
+        boardNames={boardNames}
         toggleHeader={toggleHeader}
         hideHeader={hideHeader}
         setCreateBoard={setCreateBoard}
@@ -174,6 +176,8 @@ const Layout = () => {
       </div>
       {createBoard && (
         <CreateBoard
+          boardNames={boardNames}
+          boards={boards}
           setCreateBoard={setCreateBoard}
           onCreateBoard={handleCreateBoard}
         />

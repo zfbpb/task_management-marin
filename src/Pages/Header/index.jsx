@@ -10,7 +10,7 @@ import { BoardImg } from "../../Icons/BoardIcon";
 import { HideSideBar } from "../../Icons/HideSideBar";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards }) => {
+const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards, boardNames }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [checkMode, setCheckMode] = useState(theme === "dark-theme");
 
@@ -40,7 +40,7 @@ const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards }) => {
     "Marketing Plan": "/marketing-plan",
     Roadmap: "/roadmap",
   }; */
-  const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
+  
 
   const boardNamesLinks = boardNames.reduce((acc, board) => {
     acc[board] = `/${board.replace(/\s+/g, '-').toLowerCase()}`;

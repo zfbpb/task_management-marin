@@ -38,7 +38,7 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
       color: "blue-ball",
     },
   ];
-  const [columns, setColumn] = useState(columnConfig);
+  const [columns] = useState(columnConfig);
 
   useEffect(() => {
     setSelectedBoard(data); // Setting selected board
@@ -59,6 +59,7 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
 
     setColumn((prevColumn) => [...prevColumn, newColumn]);
   }; */
+  //console.log(boardIndex);
   return (
     <div className={`newboard-container ${theme}`}>
       <div className="title">

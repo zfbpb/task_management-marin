@@ -28,7 +28,7 @@ const BoardContainer = ({ boardIndex, data, onDragEnd, columnConfig }) => {
   const columnConfigName =
   columnConfig && columnConfig[boardIndex] ? columnConfig[boardIndex].name : null;
 
-console.log("columnConfigName:", columnConfigName);
+//console.log("columnConfigName:", columnConfigName);
   return (
     <>
       <DragDropContext onDragEnd={(result) => onDragEnd(result, boardIndex)}>
