@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import "./board.scss";
 import { useNavigate } from "react-router-dom";
 
-const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames, boards }) => {
+const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
   const [nameError, setNameError] = useState("");
   const navigate = useNavigate(); // for new boards route
   const handleClose = () => {
     setCreateBoard(false);
   };
 
-  console.log(boardNames);
+  //console.log(boards);
   // create new routes
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
+    console.log(boardNames);
 
+    boardNames.push(name)
+    
     if (!name.trim()) {
       /* setTimeout(() =>{
 
@@ -30,7 +33,6 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames, boards }) => {
 
     const existingBoards = JSON.parse(localStorage.getItem("boards") || "[]");
     existingBoards.push(boardData);
-    console.log("boardData", boardData);
     localStorage.setItem("boards", JSON.stringify(existingBoards));
 
     onCreateBoard(boardData);
