@@ -41,7 +41,7 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
   const [columns] = useState(columnConfig);
 
 
-  //  console.log(boardIndex);
+ 
   useEffect(() => {
     setSelectedBoard(data); // Setting selected board
     

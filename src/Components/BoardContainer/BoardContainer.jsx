@@ -23,12 +23,11 @@ const BoardContainer = ({ boardIndex, data, onDragEnd, columnConfig }) => {
     const isEmpty = !column.tasks || column.tasks.length === 0;
     setIsEmptyColumn((prev) => ({ ...prev, [column.id]: isEmpty }));
   };
-  /* const firstColumnName = columnConfig?.name;
-  console.log(firstColumnName); */
+  
   const columnConfigName =
   columnConfig && columnConfig[boardIndex] ? columnConfig[boardIndex].name : null;
 
-//console.log("columnConfigName:", columnConfigName);
+
   return (
     <>
       <DragDropContext onDragEnd={(result) => onDragEnd(result, boardIndex)}>

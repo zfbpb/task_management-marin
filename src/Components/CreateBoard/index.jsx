@@ -9,12 +9,11 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     setCreateBoard(false);
   };
 
-  //console.log(boards);
   // create new routes
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
-    console.log(boardNames);
+   
 
     //boardNames.push(name)
     
@@ -37,11 +36,11 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     localStorage.setItem("boards", JSON.stringify(existingBoards));
 
     onCreateBoard(boardData, updatedBoardNames);
-    console.log(updatedBoardNames);
+   
     navigate(`/${route}`);
     handleClose();
   };
-  //console.log(boardData);
+
   return (
     <div className="create-boardContainer">
       <p className="board-title">Add New Board</p>

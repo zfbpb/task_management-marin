@@ -46,7 +46,6 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
   useEffect(() => {
     localStorage.setItem("boardData", JSON.stringify(data));
   }, [data]);
-
   //Split function usage based on boardIndex - undefined columns fix
   const updateDataInMain = (updatedData, boardIndex) => {
     setData((prevData) => {
