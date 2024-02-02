@@ -4,40 +4,11 @@ import "./newboard.scss";
 import { ThemeContext } from "../../Theme";
 import NewColumn from "../NewColumn/NewColumn";
 import BoardContainer from "../BoardContainer/BoardContainer";
-import { columnColors } from "../../Assets/columnColors/columnColors";
+import { columnConfig } from "../../Assets/columnConfig/columnConfig";
 
 const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
   const { theme } = useContext(ThemeContext);
-  const columnConfig = [
-    {
-      id: 211221211,
-      name: "Todo",
-      tasks: [
-        {
-          id: 1,
-          title: "Build UI for onboarding flow",
-          description: "",
-          status: "Todo",
-          statusId: 0,
-        },
-      ],
-      color: columnColors["Todo"],
-    },
-    {
-      id: 11111111112,
-      name: "Doing",
-      tasks: [
-        {
-          id: 0,
-          title: "Build UI for onboarding flow222",
-          description: "",
-          status: "Todo",
-          statusId: 0,
-        },
-      ],
-      color: "blue-ball",
-    },
-  ];
+  
   const [columns] = useState(columnConfig);
 
 

@@ -30,8 +30,8 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     //let boardIndex = 3;
 
     const boardData = { route, name };
-
     const existingBoards = JSON.parse(localStorage.getItem("boards") || "[]");
+    console.log(existingBoards);
     existingBoards.push(boardData);
     localStorage.setItem("boards", JSON.stringify(existingBoards));
 

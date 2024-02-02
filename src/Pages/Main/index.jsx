@@ -96,6 +96,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
           <Route
             key={board.route}
             path={`/${board.route}`}
+            data={data}
             element={
               <NewBoard  
                 data={board} // used for board name
