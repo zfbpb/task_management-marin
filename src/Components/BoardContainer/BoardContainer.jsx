@@ -2,21 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 import Card from "../../Assets/drag-drop/Card";
 import { ThemeContext } from "../../Theme";
+import { columnColors } from "../../Assets/columnColors/columnColors";
 
-const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
+const BoardContainer = ({ boardIndex, data, onDragEnd, columnConfig }) => {
   const { theme } = useContext(ThemeContext);
-  const columnColors = {
-    Todo: "blue-ball",
-    Doing: "purple-ball",
-    Done: "green-ball",
-    Now: "blue-ball",
-    Next: "purple-ball",
-    Later: "green-ball",
-  };
+
   const [isEmptyColumn, setIsEmptyColumn] = useState({});
 
   useEffect(() => {
-   
     const checkAllColumns = () => {
       data.boards[boardIndex]?.columns.forEach((column) => {
         checkEmptyColumn(column);
@@ -30,14 +23,18 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
     const isEmpty = !column.tasks || column.tasks.length === 0;
     setIsEmptyColumn((prev) => ({ ...prev, [column.id]: isEmpty }));
   };
+  
+  const columnConfigName =
+  columnConfig && columnConfig[boardIndex] ? columnConfig[boardIndex].name : null;
+
 
   return (
     <>
       <DragDropContext onDragEnd={(result) => onDragEnd(result, boardIndex)}>
-        
         {data.boards[boardIndex]?.columns.map((column, columnIndex) => {
           const columnNum = column.tasks.length;
-          const columnColorClass = columnColors[column.name] || "ball";
+          const columnColorClass =
+            columnColors[column.name] || columnConfigName || "ball";
           const droppableId = column.id?.toString() || columnIndex.toString();
 
           return (

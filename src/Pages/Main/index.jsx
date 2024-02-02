@@ -21,7 +21,6 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
 
   const onDragEnd = (result, boardIndex) => {
     const { source, destination } = result;
-
     // Ignore if the item is dropped outside a column or if there's no destination
     if (!destination) return;
 
@@ -47,7 +46,6 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
   useEffect(() => {
     localStorage.setItem("boardData", JSON.stringify(data));
   }, [data]);
-
   //Split function usage based on boardIndex - undefined columns fix
   const updateDataInMain = (updatedData, boardIndex) => {
     setData((prevData) => {
@@ -97,13 +95,12 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
         {boards.map((board, boardIndex) => (
           <Route
             key={board.route}
-            path={`/${board.route}`} // path={`/boards/:boardRoute`}
+            path={`/${board.route}`}
             element={
-              <NewBoard
-                data={board}
+              <NewBoard  
+                data={board} // used for board name
                 boardIndex={boardIndex}
                 onDragEnd={onDragEnd}
-                deleteBoard={deleteBoard}
                 setSelectedBoard={setSelectedBoard}
               />
             }
