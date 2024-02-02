@@ -10,7 +10,13 @@ import { BoardImg } from "../../Icons/BoardIcon";
 import { HideSideBar } from "../../Icons/HideSideBar";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards, boardNames }) => {
+const Header = ({
+  toggleHeader,
+  hideHeader,
+  setCreateBoard,
+  boards,
+  boardNames,
+}) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [checkMode, setCheckMode] = useState(theme === "dark-theme");
 
@@ -21,9 +27,19 @@ const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards, boardNames }
   const boardIcon = <BoardImg />;
   const hideSidebarIcon = <HideSideBar />;
 
-  const kanbanLogoLightIcon = <img src={kanbanLogoLight} alt="kanban logo" className="kanban-logo-light" />;
+  const kanbanLogoLightIcon = (
+    <img
+      src={kanbanLogoLight}
+      alt="kanban logo"
+      className="kanban-logo-light"
+    />
+  );
   const kanbanLogoDarkIcon = (
-    <img src={kanbanLogoDark} alt="kanban logo dark" className="kanban-logo-dark"/>
+    <img
+      src={kanbanLogoDark}
+      alt="kanban logo dark"
+      className="kanban-logo-dark"
+    />
   );
 
   const sunIcon = <img src={sun} alt="sun icon" className="sunIcon" />;
@@ -33,20 +49,11 @@ const Header = ({ toggleHeader, hideHeader, setCreateBoard, boards, boardNames }
     toggleTheme();
     setCheckMode((prev) => !prev);
   };
-/* 
-  const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
-  const boardNamesLinks = {
-    "Platform Launch": "/platform-launch",
-    "Marketing Plan": "/marketing-plan",
-    Roadmap: "/roadmap",
-  }; */
-  
 
   const boardNamesLinks = boardNames.reduce((acc, board) => {
-    acc[board] = `/${board.replace(/\s+/g, '-').toLowerCase()}`;
+    acc[board] = `/${board.replace(/\s+/g, "-").toLowerCase()}`;
     return acc;
   }, {});
-  
 
   return (
     <header className={`header ${theme} ${hideHeader ? "" : "hidden"}`}>

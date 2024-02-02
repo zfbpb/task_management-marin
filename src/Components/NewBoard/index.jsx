@@ -50,19 +50,8 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
       setSelectedBoard(null);
     };
   }, [data, setSelectedBoard]);
-  //console.log("columnConfig", columnConfig);
-  //console.log(data); --> route,name
-  /*   const addNewColumn = (columnName, columnColors) => {
-    const newColumn = {
-      id: Date.now(),
-      name: columnName,
-      color: columnColors,
-      tasks: [],
-    };
 
-    setColumn((prevColumn) => [...prevColumn, newColumn]);
-  }; */
-  //console.log(boardIndex);
+  
   return (
     <div className={`newboard-container ${theme}`}>
       <div className="title">
