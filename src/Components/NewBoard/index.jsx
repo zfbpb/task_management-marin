@@ -14,7 +14,7 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
       name: "Todo",
       tasks: [
         {
-          id: 0,
+          id: 1,
           title: "Build UI for onboarding flow",
           description: "",
           status: "Todo",
@@ -40,14 +40,17 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
   ];
   const [columns] = useState(columnConfig);
 
+
+  //  console.log(boardIndex);
   useEffect(() => {
     setSelectedBoard(data); // Setting selected board
-
+    
     // Cleanup function to clear the selected board
     return () => {
       setSelectedBoard(null);
     };
   }, [data, setSelectedBoard]);
+  //console.log("columnConfig", columnConfig);
   //console.log(data); --> route,name
   /*   const addNewColumn = (columnName, columnColors) => {
     const newColumn = {

@@ -21,7 +21,6 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
 
   const onDragEnd = (result, boardIndex) => {
     const { source, destination } = result;
-
     // Ignore if the item is dropped outside a column or if there's no destination
     if (!destination) return;
 
@@ -97,13 +96,12 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
         {boards.map((board, boardIndex) => (
           <Route
             key={board.route}
-            path={`/${board.route}`} // path={`/boards/:boardRoute`}
+            path={`/${board.route}`}
             element={
               <NewBoard  
-                data={board}
+                data={board} // used for board name
                 boardIndex={boardIndex}
                 onDragEnd={onDragEnd}
-                deleteBoard={deleteBoard}
                 setSelectedBoard={setSelectedBoard}
               />
             }
