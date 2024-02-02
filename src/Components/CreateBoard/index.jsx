@@ -16,7 +16,7 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     const name = e.target.name.value;
     console.log(boardNames);
 
-    boardNames.push(name)
+    //boardNames.push(name)
     
     if (!name.trim()) {
       /* setTimeout(() =>{
@@ -25,6 +25,7 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
       setNameError("Name cannot be empty"); // Error if input value is 0
       return;
     }
+    const updatedBoardNames = [...boardNames, name]
 
     const route = name.toLowerCase().replace(/ /g, "-");
     //let boardIndex = 3;
@@ -35,7 +36,8 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     existingBoards.push(boardData);
     localStorage.setItem("boards", JSON.stringify(existingBoards));
 
-    onCreateBoard(boardData);
+    onCreateBoard(boardData, updatedBoardNames);
+    console.log(updatedBoardNames);
     navigate(`/${route}`);
     handleClose();
   };
