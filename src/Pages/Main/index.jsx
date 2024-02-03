@@ -10,7 +10,7 @@ import BoardContainer from "../../Components/BoardContainer/BoardContainer";
 import initialData from "../../Assets/data/data.json";
 
 //boards for keeping track of existing and a new boards
-const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
+const Main = ({ boards }) => {
   const { theme } = useContext(ThemeContext);
   //const [isEmptyColumn, setIsEmptyColumn] = useState({});
 
@@ -101,8 +101,7 @@ const Main = ({ boards, deleteBoard, setSelectedBoard }) => {
               <NewBoard  
                 data={board} // used for board name
                 boardIndex={boardIndex}
-                onDragEnd={onDragEnd}
-                setSelectedBoard={setSelectedBoard}
+                onDragEnd={onDragEnd}        
               />
             }
           />
