@@ -4,15 +4,12 @@ import "./newboard.scss";
 import { ThemeContext } from "../../Theme";
 import NewColumn from "../NewColumn/NewColumn";
 import BoardContainer from "../BoardContainer/BoardContainer";
-import { columnConfig } from "../../Assets/columnConfig/columnConfig";
+import { tasks } from "../../Assets/columnConfig/columnConfig";
 
 const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
   const { theme } = useContext(ThemeContext);
-  
-  const [columns] = useState(columnConfig);
+  const [columns] = useState(tasks);
 
-
- 
   useEffect(() => {
     setSelectedBoard(data); // Setting selected board
     
@@ -33,7 +30,6 @@ const NewBoard = ({ data, setSelectedBoard, onDragEnd, boardIndex }) => {
           data={{ boards: [{ columns }] }}
           boardIndex={boardIndex}
           onDragEnd={onDragEnd}
-          columnConfig={columnConfig}
         />
         <NewColumn />
         {/* addNewColumn={addNewColumn}  */}
