@@ -45,7 +45,7 @@ const RoadMap = ({ data, onDragEnd, updateDataInMain }) => {
     }
   };
 
-    console.log("RoadMap",data);
+   // console.log("RoadMap",data);
   return (
     <div className={`roadmap-container ${theme}`}>
       <div className="title">

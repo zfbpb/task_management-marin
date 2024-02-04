@@ -1,29 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./newboard.scss";
 
 import { ThemeContext } from "../../Theme";
 import NewColumn from "../NewColumn/NewColumn";
 import BoardContainer from "../BoardContainer/BoardContainer";
-import { newOne } from "../../Assets/columnConfig/columnConfig";
+import { data } from "../../Assets/columnConfig/columnConfig";
 
-const NewBoard = ({ data, onDragEnd, boardIndex }) => {
+const NewBoard = ({ onDragEnd, boardIndex }) => {
   const { theme } = useContext(ThemeContext);
-  const [columns] = useState(newOne[boardIndex].columns);
-
-  // Structure the data prop similar to RoadMap
-  const newData = {
-    boards: [
-      {
-        id: boardIndex, // Assuming boardIndex should be used as the id
-        name: data.name, // Assuming you want to use the name from the provided data
-        columns: columns,
-      },
-    ],
-  };
-
-  console.log("NewBoard-NewOne", newOne[boardIndex].columns);
+  //const [columns] = useState(newOne.boards[boardIndex].columns);
+  /* 
+  const newBoardData = data.boards[boardIndex].columns;
+  console.log(data);
+  console.log("NewBoardIndex",boardIndex); */
+  /* console.log("NewBoard-NewOne", newOne.columns);
   console.log(boardIndex);
-
+  console.log("NewBoard", data); */
   return (
     <div className={`newboard-container ${theme}`}>
       <div className="title">
@@ -31,11 +23,12 @@ const NewBoard = ({ data, onDragEnd, boardIndex }) => {
       </div>
       <div className="wrapper-horizontal">
         <BoardContainer
-          data={newData}
+          data={data}
           boardIndex={boardIndex}
           onDragEnd={onDragEnd}
         />
         <NewColumn />
+        {/* addNewColumn={addNewColumn}  */}
       </div>
     </div>
   );

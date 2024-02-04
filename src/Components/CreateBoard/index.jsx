@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./board.scss";
 import { useNavigate } from "react-router-dom";
-import { tasks } from "../../Assets/columnConfig/columnConfig";
+//import { tasks } from "../../Assets/columnConfig/columnConfig";
 const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
   const [nameError, setNameError] = useState("");
   const navigate = useNavigate(); // for new boards route
@@ -29,7 +29,7 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     const route = name.toLowerCase().replace(/ /g, "-");
     //let boardIndex = 3;
 
-    const boardData = { route, name, tasks };
+    const boardData = { route, name };
     const existingBoards = JSON.parse(localStorage.getItem("boards") || "[]");
     console.log(existingBoards);
     existingBoards.push(boardData);

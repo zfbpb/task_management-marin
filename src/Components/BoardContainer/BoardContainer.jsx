@@ -4,7 +4,7 @@ import Card from "../../Assets/drag-drop/Card";
 import { ThemeContext } from "../../Theme";
 import { columnColors } from "../../Assets/columnColors/columnColors";
 
-const BoardContainer = ({ boardIndex, data, onDragEnd, columnConfig }) => {
+const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
   const { theme } = useContext(ThemeContext);
 
   const [isEmptyColumn, setIsEmptyColumn] = useState({});
@@ -23,18 +23,14 @@ const BoardContainer = ({ boardIndex, data, onDragEnd, columnConfig }) => {
     const isEmpty = !column.tasks || column.tasks.length === 0;
     setIsEmptyColumn((prev) => ({ ...prev, [column.id]: isEmpty }));
   };
-  
-  const columnConfigName =
-  columnConfig && columnConfig[boardIndex] ? columnConfig[boardIndex].name : null;
-
 
   return (
     <>
       <DragDropContext onDragEnd={(result) => onDragEnd(result, boardIndex)}>
-        {data.boards[boardIndex]?.columns.map((column, columnIndex) => {
-          const columnNum = column.tasks.length;
+        {data?.boards[boardIndex]?.columns?.map((column, columnIndex) => {
+          const columnNum = column.tasks?.length;
           const columnColorClass =
-            columnColors[column.name] || columnConfigName || "ball";
+            columnColors[column.name] || "ball";
           const droppableId = column.id?.toString() || columnIndex.toString();
 
           return (
@@ -47,9 +43,9 @@ const BoardContainer = ({ boardIndex, data, onDragEnd, columnConfig }) => {
               <Droppable droppableId={droppableId}>
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {data.boards[boardIndex].columns[columnIndex].tasks
-                      .filter((task) => task)
-                      .map((task, id) => (
+                    {data?.boards[boardIndex]?.columns[columnIndex]?.tasks
+                      ?.filter((task) => task)
+                      ?.map((task, id) => (
                         <Card
                           key={task.id || `fallback-id-${id}`}
                           id={task.id || `fallback-id-${id}`}
