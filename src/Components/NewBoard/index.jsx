@@ -4,11 +4,25 @@ import "./newboard.scss";
 import { ThemeContext } from "../../Theme";
 import NewColumn from "../NewColumn/NewColumn";
 import BoardContainer from "../BoardContainer/BoardContainer";
-import { tasks } from "../../Assets/columnConfig/columnConfig";
+import { newOne } from "../../Assets/columnConfig/columnConfig";
 
 const NewBoard = ({ data, onDragEnd, boardIndex }) => {
   const { theme } = useContext(ThemeContext);
-  const [columns] = useState(tasks);
+  const [columns] = useState(newOne[boardIndex].columns);
+
+  // Structure the data prop similar to RoadMap
+  const newData = {
+    boards: [
+      {
+        id: boardIndex, // Assuming boardIndex should be used as the id
+        name: data.name, // Assuming you want to use the name from the provided data
+        columns: columns,
+      },
+    ],
+  };
+
+  console.log("NewBoard-NewOne", newOne[boardIndex].columns);
+  console.log(boardIndex);
 
   return (
     <div className={`newboard-container ${theme}`}>
@@ -17,12 +31,11 @@ const NewBoard = ({ data, onDragEnd, boardIndex }) => {
       </div>
       <div className="wrapper-horizontal">
         <BoardContainer
-          data={{ boards: [{ columns }] }}
+          data={newData}
           boardIndex={boardIndex}
           onDragEnd={onDragEnd}
         />
         <NewColumn />
-        {/* addNewColumn={addNewColumn}  */}
       </div>
     </div>
   );

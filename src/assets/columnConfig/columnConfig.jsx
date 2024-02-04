@@ -49,7 +49,7 @@ export const newOne = [
         name: "Todo",
         tasks: [
           {
-            id: 1,
+            id: 0,
             title: "Build UI for onboarding flow",
             description: "",
             status: "Todo",
