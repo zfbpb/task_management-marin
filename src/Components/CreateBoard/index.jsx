@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import "./board.scss";
 import { useNavigate } from "react-router-dom";
 //import { tasks } from "../../Assets/columnConfig/columnConfig";
-const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
+const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames, updateBoardNames }) => {
   const [nameError, setNameError] = useState("");
   const navigate = useNavigate(); // for new boards route
   const handleClose = () => {
     setCreateBoard(false);
   };
-
+console.log(boardNames);
   // create new routes
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     localStorage.setItem("boards", JSON.stringify(existingBoards));
 
     onCreateBoard(boardData, updatedBoardNames);
-   
+    updateBoardNames(name);
     navigate(`/${route}`);
     handleClose();
   };

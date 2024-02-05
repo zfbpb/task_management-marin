@@ -99,7 +99,7 @@ const Main = ({ boards }) => {
             data={data}
             element={
               <NewBoard  
-                data={board} // used for board name
+                board={board}
                 boardIndex={boardIndex}
                 onDragEnd={onDragEnd}        
               />
@@ -107,7 +107,7 @@ const Main = ({ boards }) => {
           />
         ))}
       </Routes>
-      <BoardContainer onDragEnd={onDragEnd} data={data} />
+      <BoardContainer onDragEnd={onDragEnd} data={data}/>
     </div>
   );
 };
