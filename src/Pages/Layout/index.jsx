@@ -121,10 +121,8 @@ const Layout = () => {
     }
   };
   const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
-  /* const updateBoardNames = (newBoard) => {
-    setBoards((boardNames) => [...boardNames, newBoard]);
-    
-  }; */
+
+  
   return (
     <div
       className={`layoutContainer ${theme} ${createBoard ? "blur" : ""}
@@ -136,7 +134,7 @@ const Layout = () => {
         hideHeader={hideHeader}
         setCreateBoard={setCreateBoard}
         boards={boards}
-        //boardNamesLinks={boardNamesLinks}
+        
       />
       {showButton && (
         <button className="toggleHeader" onClick={toggleHeader}>
@@ -184,7 +182,6 @@ const Layout = () => {
           boards={boards}
           setCreateBoard={setCreateBoard}
           onCreateBoard={handleCreateBoard}
-         /*  updateBoardNames={updateBoardNames} */
         />
       )}
     </div>

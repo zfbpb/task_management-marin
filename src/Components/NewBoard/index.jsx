@@ -8,7 +8,6 @@ import { data } from "../../Assets/columnConfig/columnConfig";
 
 const NewBoard = ({ onDragEnd, boardIndex, board }) => {
   const { theme } = useContext(ThemeContext);
-//console.log(data);
   return (
     <div className={`newboard-container ${theme}`}>
       <div className="title">
