@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import "./board.scss";
 import { useNavigate } from "react-router-dom";
-const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
- /*  const allExistingBoards = JSON.parse(
-    localStorage.getItem("allBoards") || "[]"
-  );
-  const [allBoards, setAllBoards] = useState(allExistingBoards); */
 
+const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
   const [nameError, setNameError] = useState("");
   const navigate = useNavigate(); // for new boards route
-
+  
   const handleClose = () => {
     setCreateBoard(false);
   };
@@ -26,25 +22,29 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
 
     // Get existing board names from localStorage
     const existingBoardNames =
-      JSON.parse(localStorage.getItem("boardNames")) || [];
+      JSON.parse(localStorage.getItem("boardNames")) || boardNames;
 
-    // Update existing board names with the new name
+    console.log("existingBoardNames",existingBoardNames); // shows always 3
+
     const updatedBoardNames = [...existingBoardNames, name];
 
-    // Save updated board names to localStorage
+    
     localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames));
 
     const id = updatedBoardNames.length;
-
-
+    console.log(id);
+    console.log(updatedBoardNames);
+    /* 
+    console.log(updatedBoardNames); */
     const boardData = { route, name, id };
 
-   
-
-    //localStorage.setItem("boards", JSON.stringify(existingBoards));
+    
     onCreateBoard(boardData);
 
+    // Navigate to the new board route
     navigate(`/${route}`);
+
+    // Close the create board modal
     handleClose();
   };
 
