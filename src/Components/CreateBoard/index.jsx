@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./board.scss";
 import { useNavigate } from "react-router-dom";
-const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
+const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
+ /*  const allExistingBoards = JSON.parse(
+    localStorage.getItem("allBoards") || "[]"
+  );
+  const [allBoards, setAllBoards] = useState(allExistingBoards); */
+
   const [nameError, setNameError] = useState("");
   const navigate = useNavigate(); // for new boards route
 
@@ -19,22 +24,24 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
 
     const route = name.toLowerCase().replace(/ /g, "-");
 
-    const existingBoards = JSON.parse(localStorage.getItem("boards") || "[]");
+    // Get existing board names from localStorage
+    const existingBoardNames =
+      JSON.parse(localStorage.getItem("boardNames")) || [];
 
-    existingBoards.push(name)
-    const id = existingBoards.length
-    //const id = existingBoards.length <= 3 ? existingBoards.length + 1 : 3;
- /*  for (let id = 3; newID < id; newID++) {
-    const element = array[id];
-    
-  } */
-  //console.log(existingBoards);
+    // Update existing board names with the new name
+    const updatedBoardNames = [...existingBoardNames, name];
+
+    // Save updated board names to localStorage
+    localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames));
+
+    const id = updatedBoardNames.length;
+
+
     const boardData = { route, name, id };
-    //console.log(existingBoards.length);
-    console.log("boardData",boardData);
 
-    //existingBoards.push(boardData);
-    localStorage.setItem("boards", JSON.stringify(existingBoards));
+   
+
+    //localStorage.setItem("boards", JSON.stringify(existingBoards));
     onCreateBoard(boardData);
 
     navigate(`/${route}`);

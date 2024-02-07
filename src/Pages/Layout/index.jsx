@@ -122,6 +122,8 @@ const Layout = () => {
   };
   const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
 
+  localStorage.setItem("boardNames", JSON.stringify(boardNames));
+
   
   return (
     <div
