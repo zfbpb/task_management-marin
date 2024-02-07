@@ -57,7 +57,7 @@ const Main = ({ boards }) => {
       return { ...prevData, boards: updatedBoards };
     });
   };
-
+//console.log("boards",boards);
   return (
     <div className={`mainContainer ${theme} `}>
       <Routes>

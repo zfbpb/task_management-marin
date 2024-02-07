@@ -4,7 +4,7 @@ import Card from "../../Assets/drag-drop/Card";
 import { ThemeContext } from "../../Theme";
 import { columnColors } from "../../Assets/columnColors/columnColors";
 
-const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
+const BoardContainer = ({ boardIndex, data, onDragEnd, id }) => {
   const { theme } = useContext(ThemeContext);
 
   const [isEmptyColumn, setIsEmptyColumn] = useState({});
@@ -26,7 +26,7 @@ const BoardContainer = ({ boardIndex, data, onDragEnd }) => {
 
   return (
     <>
-      <DragDropContext onDragEnd={(result) => onDragEnd(result, boardIndex)}>
+      <DragDropContext onDragEnd={(result) => onDragEnd(result, boardIndex, id)}>
         {data?.boards[boardIndex]?.columns?.map((column, columnIndex) => {
           const columnNum = column.tasks?.length;
           const columnColorClass =
