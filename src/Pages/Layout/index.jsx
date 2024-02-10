@@ -121,6 +121,8 @@ const Layout = () => {
     }
   };
   const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
+
+  
   return (
     <div
       className={`layoutContainer ${theme} ${createBoard ? "blur" : ""}
@@ -132,7 +134,7 @@ const Layout = () => {
         hideHeader={hideHeader}
         setCreateBoard={setCreateBoard}
         boards={boards}
-        //boardNamesLinks={boardNamesLinks}
+        
       />
       {showButton && (
         <button className="toggleHeader" onClick={toggleHeader}>

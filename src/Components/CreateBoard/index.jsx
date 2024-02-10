@@ -1,42 +1,34 @@
 import React, { useState } from "react";
 import "./board.scss";
 import { useNavigate } from "react-router-dom";
+const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
 
-const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
   const [nameError, setNameError] = useState("");
   const navigate = useNavigate(); // for new boards route
   const handleClose = () => {
     setCreateBoard(false);
   };
 
-  // create new routes
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
-   
-
-    //boardNames.push(name)
-    
     if (!name.trim()) {
-      /* setTimeout(() =>{
-
-      }, 500) */
       setNameError("Name cannot be empty"); // Error if input value is 0
       return;
     }
-    const updatedBoardNames = [...boardNames, name]
+
 
     const route = name.toLowerCase().replace(/ /g, "-");
-    //let boardIndex = 3;
+    
+    
 
     const boardData = { route, name };
-
     const existingBoards = JSON.parse(localStorage.getItem("boards") || "[]");
+    console.log(existingBoards);
     existingBoards.push(boardData);
     localStorage.setItem("boards", JSON.stringify(existingBoards));
-
-    onCreateBoard(boardData, updatedBoardNames);
-   
+    onCreateBoard(boardData);
+    console.log(boardData);
     navigate(`/${route}`);
     handleClose();
   };
