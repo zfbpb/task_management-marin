@@ -121,6 +121,7 @@ const Layout = () => {
     }
   };
   const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
+
   
   return (
     <div

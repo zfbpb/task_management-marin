@@ -32,10 +32,8 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames));
 
     const id = updatedBoardNames.length;
-    console.log(id);
-    console.log(updatedBoardNames);
-    /* 
-    console.log(updatedBoardNames); */
+   
+   //console.log(updatedBoardNames); -->  {route: 'fsfd', name: 'fsfd', id: 5}
     const boardData = { route, name, id };
 
     
