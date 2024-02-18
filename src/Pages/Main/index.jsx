@@ -10,7 +10,7 @@ import BoardContainer from "../../Components/BoardContainer/BoardContainer";
 import initialData from "../../Assets/data/data.json";
 
 //boards for keeping track of existing and a new boards
-const Main = ({ boards }) => {
+const Main = ({ boards, setSelectedBoard }) => {
   const { theme } = useContext(ThemeContext);
   //const [isEmptyColumn, setIsEmptyColumn] = useState({});
 
@@ -57,7 +57,7 @@ const Main = ({ boards }) => {
       return { ...prevData, boards: updatedBoards };
     });
   };
-
+//console.log("boards",boards);
   return (
     <div className={`mainContainer ${theme} `}>
       <Routes>
@@ -101,7 +101,8 @@ const Main = ({ boards }) => {
               <NewBoard  
                 board={board}
                 boardIndex={boardIndex}
-                onDragEnd={onDragEnd}        
+                onDragEnd={onDragEnd}
+                setSelectedBoard={setSelectedBoard}     
               />
             }
           />

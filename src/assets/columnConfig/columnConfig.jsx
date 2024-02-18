@@ -8,7 +8,7 @@ export const data = {
           tasks: [
             {
               id: 0,
-              title: "Build UI for onboarding flow",
+              title: "Build UI for onboarding flow0001",
               description: "",
               status: "Todo",
               statusId: 0,
@@ -25,7 +25,7 @@ export const data = {
           tasks: [
             {
               id: 4,
-              title: "Build UI for onboarding flow",
+              title: "Build UI for onboarding flow0001",
               description: "",
               status: "Doing",
               statusId: 0,
@@ -42,7 +42,7 @@ export const data = {
           tasks: [
             {
               id: 5,
-              title: "Build UI for onboarding flow",
+              title: "Build UI for onboarding flow0001",
               description: "",
               status: "Todo",
               statusId: 0,
@@ -59,7 +59,7 @@ export const data = {
           tasks: [
             {
               id: 6,
-              title: "Build UI for onboarding flow",
+              title: "Build UI for onboarding flow0001",
               description: "",
               status: "Todo",
               statusId: 0,
@@ -76,7 +76,19 @@ export const data = {
           tasks: [
             {
               id: 0,
-              title: "Build UI for onboarding flow",
+              title: "Build UI for onboarding flow0002",
+              description: "",
+              status: "Todo",
+              statusId: 0,
+            },
+          ],
+        },
+        {
+          name: "Doing",
+          tasks: [
+            {
+              id: 0,
+              title: "Build UI for onboarding flow0002",
               description: "",
               status: "Todo",
               statusId: 0,
@@ -85,6 +97,34 @@ export const data = {
         },
       ],
     },
-  ]
-}
- 
+    {
+      id: 2112212111,
+      columns: [
+        {
+          name: "Todo",
+          tasks: [
+            {
+              id: 0,
+              title: "Build UI for onboarding flow0003",
+              description: "",
+              status: "Todo",
+              statusId: 0,
+            },
+          ],
+        },
+        {
+          name: "Doing",
+          tasks: [
+            {
+              id: 0,
+              title: "Build UI for onboarding flow0003",
+              description: "",
+              status: "Todo",
+              statusId: 0,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};

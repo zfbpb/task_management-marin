@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./board.scss";
 import { useNavigate } from "react-router-dom";
-const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
 
+const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
   const [nameError, setNameError] = useState("");
   const navigate = useNavigate(); // for new boards route
+  
   const handleClose = () => {
     setCreateBoard(false);
   };
@@ -17,19 +18,31 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard }) => {
       return;
     }
 
-
     const route = name.toLowerCase().replace(/ /g, "-");
-    
-    
 
-    const boardData = { route, name };
-    const existingBoards = JSON.parse(localStorage.getItem("boards") || "[]");
-    console.log(existingBoards);
-    existingBoards.push(boardData);
-    localStorage.setItem("boards", JSON.stringify(existingBoards));
+    // Get existing board names from localStorage
+    const existingBoardNames =
+      JSON.parse(localStorage.getItem("boardNames")) || boardNames;
+
+    console.log("existingBoardNames",existingBoardNames); // shows always 3
+
+    const updatedBoardNames = [...existingBoardNames, name];
+
+    
+    localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames));
+
+    const id = updatedBoardNames.length;
+   
+   //console.log(updatedBoardNames); -->  {route: 'fsfd', name: 'fsfd', id: 5}
+    const boardData = { route, name, id };
+
+    
     onCreateBoard(boardData);
-    console.log(boardData);
+
+    // Navigate to the new board route
     navigate(`/${route}`);
+
+    // Close the create board modal
     handleClose();
   };
 
