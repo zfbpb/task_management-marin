@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./newboard.scss";
 
 import { ThemeContext } from "../../Theme";
@@ -6,8 +6,17 @@ import NewColumn from "../NewColumn/NewColumn";
 import BoardContainer from "../BoardContainer/BoardContainer";
 import { data } from "../../Assets/columnConfig/columnConfig";
 
-const NewBoard = ({ onDragEnd, board }) => {
+const NewBoard = ({ onDragEnd, board, setSelectedBoard }) => {
   const { theme } = useContext(ThemeContext);
+
+useEffect(() => {
+  setSelectedBoard(board); // Setting selected board
+
+  // Cleanup function to clear the selected board 
+  return () => {
+    setSelectedBoard(null);
+  };
+}, [board, setSelectedBoard]);
 
   const { id } = board;
   return (
