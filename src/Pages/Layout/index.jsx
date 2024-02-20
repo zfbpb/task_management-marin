@@ -122,7 +122,6 @@ const Layout = () => {
   };
   const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
 
-  
   return (
     <div
       className={`layoutContainer ${theme} ${createBoard ? "blur" : ""}
