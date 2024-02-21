@@ -30,6 +30,9 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
 
     
     localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames));
+    
+   // console.log(updatedBoardNames);
+
 
     const id = updatedBoardNames.length;
    
