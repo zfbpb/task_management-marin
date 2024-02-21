@@ -19,6 +19,8 @@ useEffect(() => {
 }, [board, setSelectedBoard]);
 
   const { id } = board;
+
+  console.log("id",id);
   return (
     <div className={`newboard-container ${theme}`}>
       <div className="title">
