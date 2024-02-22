@@ -42,10 +42,17 @@ const Layout = () => {
     setBoards(storedBoards);
   }, []);
 
+
   const deleteBoard = (boardName) => {
     const updatedBoards = boards.filter((board) => board.name !== boardName); // a new array of boards including the board to be deleted
     setBoards(updatedBoards); // update state with the new array of boards - removing the selected board
     localStorage.setItem("boards", JSON.stringify(updatedBoards)); // update inside localStorage
+
+  
+    //update state inside CreateBoard after func triggers
+    /* const updatedBoardNames = updatedBoards.map(board => board.name);
+    localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames)); */
+    //console.log("updatedBoardNames",updatedBoardNames);
   };
 
   //                                                    new
@@ -58,12 +65,25 @@ const Layout = () => {
     try {
       if (selectedBoard) {
         deleteBoard(selectedBoard.name);
+  
+        // Fetch existing board names from localStorage
+        const existingBoardNames = JSON.parse(localStorage.getItem("boardNames")) || [];
+  
+        // Filter out the name of the selected board
+        const updatedBoardNames = existingBoardNames.filter(name => name !== selectedBoard.name);
+  
+        // Update the localStorage with the filtered board names
+        localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames));
+  
+        console.log("Updated board names:", updatedBoardNames);
+  
         navigate("/");
       }
     } catch (error) {
       console.error("Error navigating:", error);
     }
   };
+  
 
   //close menu with click outside of box
   const dropdownRef = useRef(null);
@@ -122,7 +142,6 @@ const Layout = () => {
   };
   const boardNames = ["Platform Launch", "Marketing Plan", "Roadmap"];
 
-  
   return (
     <div
       className={`layoutContainer ${theme} ${createBoard ? "blur" : ""}

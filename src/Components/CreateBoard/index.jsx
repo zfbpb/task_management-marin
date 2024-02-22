@@ -24,12 +24,15 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     const existingBoardNames =
       JSON.parse(localStorage.getItem("boardNames")) || boardNames;
 
-    console.log("existingBoardNames",existingBoardNames); // shows always 3
+    //console.log("existingBoardNames",existingBoardNames); // shows always 3
 
     const updatedBoardNames = [...existingBoardNames, name];
 
     
     localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames));
+    
+   // console.log(updatedBoardNames);
+
 
     const id = updatedBoardNames.length;
    
