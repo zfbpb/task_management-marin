@@ -30,7 +30,7 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
     // Find the maximum ID among the existing boards
     const maxId = existingBoards.reduce((max, board) => {
       return board.id > max ? board.id : max;
-    }, 0);
+    }, 5);
   
     const updatedBoardNames = [...existingBoardNames, name];
   

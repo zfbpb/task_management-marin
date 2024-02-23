@@ -20,7 +20,7 @@ useEffect(() => {
 
   const { id } = board;
 
-  console.log("id",id);
+  
   return (
     <div className={`newboard-container ${theme}`}>
       <div className="title">
