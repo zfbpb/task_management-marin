@@ -75,8 +75,6 @@ const Layout = () => {
         // Update the localStorage with the filtered board names
         localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames));
   
-        console.log("Updated board names:", updatedBoardNames);
-  
         navigate("/");
       }
     } catch (error) {

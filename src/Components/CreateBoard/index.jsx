@@ -17,38 +17,38 @@ const CreateBoard = ({ setCreateBoard, onCreateBoard, boardNames }) => {
       setNameError("Name cannot be empty"); // Error if input value is 0
       return;
     }
-
+  
     const route = name.toLowerCase().replace(/ /g, "-");
-
+  
     // Get existing board names from localStorage
     const existingBoardNames =
       JSON.parse(localStorage.getItem("boardNames")) || boardNames;
-
-    //console.log("existingBoardNames",existingBoardNames); // shows always 3
-
+  
+    const existingBoards =
+      JSON.parse(localStorage.getItem("boards")) || [];
+    
+    // Find the maximum ID among the existing boards
+    const maxId = existingBoards.reduce((max, board) => {
+      return board.id > max ? board.id : max;
+    }, 5);
+  
     const updatedBoardNames = [...existingBoardNames, name];
-
-    
+  
     localStorage.setItem("boardNames", JSON.stringify(updatedBoardNames));
-    
-   // console.log(updatedBoardNames);
-
-
-    const id = updatedBoardNames.length;
-   
-   //console.log(updatedBoardNames); -->  {route: 'fsfd', name: 'fsfd', id: 5}
+  
+    const id = maxId + 1; // Assign a new ID one greater than the maximum
+  
     const boardData = { route, name, id };
-
-    
+  
     onCreateBoard(boardData);
-
+  
     // Navigate to the new board route
     navigate(`/${route}`);
-
+  
     // Close the create board modal
     handleClose();
   };
-
+  
   return (
     <div className="create-boardContainer">
       <p className="board-title">Add New Board</p>
