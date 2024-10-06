@@ -1,0 +1,21 @@
+@import '../../assets/colors/colors.scss';
+
+.task-title {
+    // cursor: move;
+    margin: 10px;
+    padding: 10px;
+    //width: 200px;
+    margin-top: 10px;
+    border-radius: 10px;
+    //height: 10vh;
+    cursor: grab;
+
+    &.dark-theme {
+        background-color: $background2;
+    }
+
+    &.light-theme {
+        background-color: $text;
+    }
+
+}

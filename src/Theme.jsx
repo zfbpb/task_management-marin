@@ -1,6 +1,6 @@
 import React, { useEffect, createContext, useState } from "react";
-import './assets/colors/colors.scss'
 
+import "./Assets/colors/colors.scss"
 const ThemeContext = createContext();
 
 const getTheme = () => {
